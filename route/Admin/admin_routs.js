@@ -3,6 +3,7 @@ const mother_route = express.Router();
 const mother_controller = require('../../controller/Admin/Mother/admin_mother_controller');
 const astrologer_controller = require('../../controller/Admin/Astrologer/astrologer_controller');
 const paediatrician_controller = require('../../controller/Admin/Pediatrician/pediatrician_controller');
+const baby_name_provider_controller = require('../../controller/Admin/Name_Provider/name_provider_controller');
 
 // Thisrouts for mother
 mother_route.get("/mother_list",mother_controller.registered_mothers);
@@ -29,6 +30,11 @@ mother_route.get("/unblock_astrologer",astrologer_controller.Unblock_astrologers
 mother_route.get("/paediatricianlist",paediatrician_controller.registered_pediatrician);
 mother_route.get("/block_paediatrician",paediatrician_controller.Block_pediatrician);
 mother_route.get("/unblock_paediatrician",paediatrician_controller.Unblock_pediatrician);
+
+// This routs for baby_name_provider
+mother_route.get("/baby_name_providerlist",baby_name_provider_controller.registered_baby_name_provider_controller);
+mother_route.get("/block_baby_name_provider",baby_name_provider_controller.Block_baby_name_provider_controller);
+mother_route.get("/unblock_baby_name_provider",baby_name_provider_controller.Unblock_baby_name_provider_controller);
 
 
 
