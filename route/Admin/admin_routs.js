@@ -1,7 +1,7 @@
 const express = require('express');
 const mother_route = express.Router();
-const astrologer_routs=express.Router();
 const mother_controller = require('../../controller/Admin/Mother/admin_mother_controller');
+const astrologer_controller = require('../../controller/Admin/Astrologer/astrologer_controller');
 
 // Thisrouts for mother
 mother_route.get("/mother_list",mother_controller.registered_mothers);
@@ -20,8 +20,9 @@ mother_route.get("/unblock_mother",mother_controller.Unblock_Mother);
 
 
 // This routs for Astrologer
-astrologer_routs.get("/mother_nof_comments",mother_controller.NOF_Comments);
-
+mother_route.get("/astrologerlist",astrologer_controller.registered_astrologers);
+mother_route.get("/block_astrologer",astrologer_controller.Block_astrologers);
+mother_route.get("/unblock_astrologer",astrologer_controller.Unblock_astrologers);
 
 
 
