@@ -13,7 +13,7 @@ exports.profile_card = (req, res, next) => {
         // const { error } = MOTHER_MODEL.validate(req.body);
         // if (error) return next( new AppError( error.details[0].message , 400));
 
-        conn.query(PROFILE_card, (err,data,feild)=>{
+        conn.query(PROFILE_card,[req.params.user_id],(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
