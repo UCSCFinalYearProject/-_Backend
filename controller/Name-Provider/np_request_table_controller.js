@@ -13,7 +13,7 @@ exports.request_table = (req, res, next) => {
         // const { error } = MOTHER_MODEL.validate(req.body);
         // if (error) return next( new AppError( error.details[0].message , 400));
 
-        conn.query(REQUEST_table, (err,data,feild)=>{
+        conn.query(REQUEST_table,[req.params.receiver_id], (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
