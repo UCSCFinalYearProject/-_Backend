@@ -4,9 +4,10 @@ const al_request_table_controller = require('../../controller/Astrologer/al_requ
 const profile_card_controller = require('../../controller/Astrologer/Al-Dashboard/profile_card_controller');
 const stat_card1_controller = require('../../controller/Astrologer/Al-Dashboard/stat_card1_controller');
 const stat_card2_controller = require('../../controller/Astrologer/Al-Dashboard/stat_card2_controller');
-
+const request_chart_controller = require('../../controller/Astrologer/Al-Dashboard/request_chart_controller');
 al_route.get("/new_request",al_request_table_controller.request_table);
 al_route.get("/db/profile_card",profile_card_controller.profile_card);
 al_route.get("/db/stat_card1",stat_card1_controller.stat_card);
 al_route.get("/db/stat_card2",stat_card2_controller.stat_card);
+al_route.get("/db/req_chart",request_chart_controller.request_chart);
 module.exports = al_route;
