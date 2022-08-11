@@ -21,7 +21,7 @@ exports.registered_mothers = (req, res, next) => {
         const { error } = MOTHER_MODEL.validate(res.body);
         if (error) return next( new AppError( error.details[0].message , 400));
 
-        conn.query(REGISTERED_Mothers, (err,data,feild)=>{
+        conn.query(REGISTERED_Mothers,(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
