@@ -1,6 +1,6 @@
 const Joi = require('@hapi/joi');
 
-exports.PROFILE_CARD_MODEL = Joi.object({
+exports.PROFIT_CHART_MODEL = Joi.object({
     user_id: Joi.string(),
     first_name: Joi.string().min(3).max(100).required(),
     last_name: Joi.string().min(3).max(100).required(),
