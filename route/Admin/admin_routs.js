@@ -15,6 +15,10 @@ mother_route.get("/post_comments_list",mother_controller.Post_Comments_List);
 mother_route.get("/Mother_Post_Details",mother_controller.Mother_Post_Details);
 mother_route.get("/Mother_Post_Reply_Count",mother_controller.Mother_Post_Reply_Count);
 
+// for mother pending post list tale
+mother_route.get("/Mother_Pending_Post_With_Count",mother_controller.Mother_Pending_Post_With_Count);
+
+
 // send uid with req body
 mother_route.get("/mother_nof_comments",mother_controller.NOF_Comments);
 mother_route.get("/block_mother",mother_controller.Block_Mother);

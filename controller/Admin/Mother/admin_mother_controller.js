@@ -9,7 +9,8 @@ const {
     MotherPostsList,
     MotherPostDetails,
     MotherPostReplyCount,
-    PostComments
+    PostComments,
+    Mother_Pending_Post_With_Count
 } = require('../../../query/Admin/Mother/admin_mother');
 const { MOTHER_MODEL} = require('../../../model/Mother/mother_model');
 const bcrypt = require('bcryptjs');
@@ -168,6 +169,23 @@ exports.Mother_Post_Reply_Count = (req, res, next) => {
 exports.Post_Comments_List = (req, res, next) => {
     try {
         conn.query(PostComments,[req.body.pid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    data:data
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.Mother_Pending_Post_With_Count = (req, res, next) => {
+    try {
+        conn.query(Mother_Pending_Post_With_Count,  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
