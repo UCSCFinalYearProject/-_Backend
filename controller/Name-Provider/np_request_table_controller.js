@@ -1,7 +1,7 @@
 const { isEmpty } = require('../../utils/is_empty');
 const conn = require('../../service/db_service');
-const {REQUEST_table } = require('../../query/Astrologer/al_request_table');
-const { REQUEST_TABLE_MODEL } = require('../../model/Astrologer/al_request_table_model');
+const {REQUEST_table } = require('../../query/Name-Provider/np_request_table');
+const { REQUEST_TABLE_MODEL } = require('../../model/Name-Provider/np_request_table_model');
 const bcrypt = require('bcryptjs');
 const AppError = require('../../utils/appError');
 const JWT = require('jsonwebtoken');

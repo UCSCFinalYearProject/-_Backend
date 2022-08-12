@@ -1,19 +1,19 @@
-const { isEmpty } = require('../../utils/is_empty');
-const conn = require('../../service/db_service');
-const {REQUEST_table } = require('../../query/Astrologer/al_request_table');
-const { REQUEST_TABLE_MODEL } = require('../../model/Astrologer/al_request_table_model');
+const { isEmpty } = require('../../../utils/is_empty');
+const conn = require('../../../service/db_service');
+const {STAT_card1,STAT_card2} = require('../../../query/Astrologer/al_dash_board');
+const { PROFILE_CARD_MODEL } = require('../../../model/Astrologer/Al-Dashboard/stat_card_model');
 const bcrypt = require('bcryptjs');
-const AppError = require('../../utils/appError');
+const AppError = require('../../../utils/appError');
 const JWT = require('jsonwebtoken');
 
 
-exports.request_table = (req, res, next) => {
+exports.stat_card = (req, res, next) => {
     // if (isEmpty(req.body)) return next( new AppError("form data not found" , 400));
     try {
         // const { error } = MOTHER_MODEL.validate(req.body);
         // if (error) return next( new AppError( error.details[0].message , 400));
 
-        conn.query(REQUEST_table,[req.params.receiver_id], (err,data,feild)=>{
+        conn.query(STAT_card1,[req.params.receiver_id ], (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))

@@ -6,7 +6,9 @@ const express = require('express');
 const student_route = require('./route/student_route'); // this for student route
 const admin_route = require('./route/Admin/admin_routs'); // this for admin route
 const student_todos_route = require('./route/student_todos');
-const al_request_table_route = require('./route/Astrologer/al_request_table_routs');
+const al_route = require('./route/Astrologer/al_routs');
+const np_route = require('./route/Name-Provider/np_routs');
+const pt_route = require('./route/Pediatrician/pt_routs');
 
 // require JWT auth Service
 const auth = require('./service/auth_service');
@@ -31,14 +33,20 @@ app.use(express.json());
 // if request come from "localhost:3000/student", then it gose to student_route
 app.use("/student" , student_route);
 
-// if request come from "localhost:3000/admin", then it gose to student_route
+// if request come from "localhost:3000/admin", then it goes to student_route
 app.use("/admin" , admin_route);
 
-// if request come from "localhost:3000/todos", then it gose to student_todos_route
+// if request come from "localhost:3000/todos", then it goes to student_todos_route
 app.use("/todos" , auth,  student_todos_route);
 
-// if request come from "localhost:3000/Astrologer", then it gose to astrologer_route
-app.use("/al/new_request" ,  al_request_table_route);
+// if request come from "localhost:3000/Astrologer", then it goes to astrologer_route
+app.use("/al" ,  al_route);
+
+// if request come from "localhost:3000/np/new_request", then it goes to name_provider_route
+app.use("/np" ,  np_route);
+
+// if request come from "localhost:3000/pt", then it goes to pediatrician_route
+app.use("/pt" ,  pt_route);
 
 // use errorhandler middleware to handle errors
 app.use( errorHandler )
