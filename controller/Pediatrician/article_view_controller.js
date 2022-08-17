@@ -3,7 +3,9 @@ const conn = require('../../service/db_service');
 const {
     VIEW_articles,
     VIEW_single_articles,
-    VIEW_articles_comments
+    VIEW_articles_comments,
+    VIEW_followers,
+    Trending_article
 } = require('../../query/Pediatrician/view_article');
 const { PEDIATRICIAN_MODEL } = require('../../model/Pediatrician/view_article');
 const bcrypt = require('bcryptjs');
@@ -66,6 +68,50 @@ exports.VIEW_article_commits = (req, res, next) => {
             else{
                 res.status(200).json({
                     article:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
+exports.VIEW_followers = (req, res, next) => {
+    //   const x= req.getParameters(doctor_id)
+    // const y= req.query['doctor_id'];
+    // console.log(req.params.article_id)
+    try {
+        conn.query(VIEW_followers,[req.body.doctor_id],(err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    followers:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
+exports.Trending_article = (req, res, next) => {
+    //   const x= req.getParameters(doctor_id)
+    // const y= req.query['doctor_id'];
+    // console.log(req.params.article_id)
+    try {
+        conn.query(Trending_article,(err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    followers:data
                 })
             }
 
