@@ -49,4 +49,6 @@ mother_route.get("/al/report_stat_card2",report_stat_card2_controller.stat_card)
 mother_route.get("/al/al_tot_income",astrologer_controller.Al_tot_income);
 mother_route.get("/al/al_pending_tot_income",astrologer_controller.Al_pending_tot_income);
 mother_route.get("/al/reg_al",astrologer_controller.Registered_al);
+mother_route.get("/al/profit_al",astrologer_controller.Profit_al);
+
 module.exports = mother_route;

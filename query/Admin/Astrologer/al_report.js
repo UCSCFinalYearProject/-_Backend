@@ -10,4 +10,7 @@ exports.TOT_income = "SELECT SUM(amount) FROM astrologer_payment WHERE status='1
 exports.PENDING_tot_income = "SELECT SUM(amount) FROM astrologer_payment WHERE status='0' AND date_time BETWEEN '2022-07-10' AND '2022-08-30'" ;
 
 //registered astrologers in between time range
-exports.REGISTERED_al="select month(registered_at), count(*) from astrologer WHERE registered_at BETWEEN '2022-07-10' AND '2022-08-10' group by month(registered_at)"
+exports.REGISTERED_al="select month(registered_at), count(*) from astrologer WHERE registered_at BETWEEN '2022-07-10' AND '2022-08-10' group by month(registered_at)";
+
+//profit from astrologers in between time range
+exports.PROFIT_al="SELECT month(date_time),SUM(amount) FROM astrologer_payment WHERE date_time BETWEEN '2022-07-12' AND '2022-08-25' GROUP BY month(date_time)\n"
