@@ -60,3 +60,23 @@ exports.Unblock_baby_name_provider_controller = (req, res, next) => {
 
     }
 }
+
+// Name Provider request list(Y)
+exports.View_baby_name_provider_requests = (req, res, next) => {
+    try {
+        conn.query(Baby_Name_Provider_Requests,[req.body.uid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    baby_name_provider:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
