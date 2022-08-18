@@ -5,6 +5,7 @@ const { MOTHER_MODEL} = require('../../../model/Mother/mother_model');
 const bcrypt = require('bcryptjs');
 const AppError = require('../../../utils/appError');
 const JWT = require('jsonwebtoken');
+const {TOT_income, PENDING_tot_income, REGISTERED_np, PROFIT_np} = require("../../../query/Admin/Name-Provider/np_report");
 
 exports.registered_baby_name_provider_controller = (req, res, next) => {
     try {
@@ -60,3 +61,86 @@ exports.Unblock_baby_name_provider_controller = (req, res, next) => {
 
     }
 }
+
+// total income of name provider
+exports.Np_tot_income = (req, res, next) => {
+    try {
+        conn.query(TOT_income,(err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    tot_income:data,
+                    message:"success"
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+
+// total pending income of name providers
+exports.Np_pending_tot_income = (req, res, next) => {
+    try {
+        conn.query(PENDING_tot_income,  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    pending_tot_income:data,
+                    message:"success"
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+
+// total registered name providers
+exports.Registered_np = (req, res, next) => {
+    try {
+        conn.query(REGISTERED_np,(err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    reg_al:data,
+                    message:"success"
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+// total registered name providers
+exports.Profit_np = (req, res, next) => {
+    try {
+        conn.query(PROFIT_np,(err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    reg_al:data,
+                    message:"success"
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+
+
+
+

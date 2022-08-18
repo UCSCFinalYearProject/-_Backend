@@ -81,7 +81,7 @@ exports.Al_tot_income = (req, res, next) => {
     }
 }
 
-// total income of astrologer
+// total pending income of astrologer
 exports.Al_pending_tot_income = (req, res, next) => {
     try {
         conn.query(PENDING_tot_income,  (err,data,feild)=>{
