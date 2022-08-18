@@ -5,7 +5,7 @@ const { MOTHER_MODEL} = require('../../../model/Mother/mother_model');
 const bcrypt = require('bcryptjs');
 const AppError = require('../../../utils/appError');
 const JWT = require('jsonwebtoken');
-const {TOT_income}=require('../../../query/Admin/Astrologer/al_report')
+const {TOT_income,PENDING_tot_income,REGISTERED_al}=require('../../../query/Admin/Astrologer/al_report')
 exports.registered_astrologers = (req, res, next) => {
     try {
         conn.query(REGISTERED_Astrologers, (err,data,feild)=>{
@@ -64,7 +64,7 @@ exports.Unblock_astrologers = (req, res, next) => {
 // total income of astrologer
 exports.Al_tot_income = (req, res, next) => {
     try {
-        conn.query(TOT_income,  (err,data,feild)=>{
+        conn.query(TOT_income,(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -72,6 +72,46 @@ exports.Al_tot_income = (req, res, next) => {
             else{
                 res.status(200).json({
                     tot_income:data,
+                    message:"success"
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+
+// total income of astrologer
+exports.Al_pending_tot_income = (req, res, next) => {
+    try {
+        conn.query(PENDING_tot_income,  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    pending_tot_income:data,
+                    message:"success"
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+
+// total registered astrologers
+exports.Registered_al = (req, res, next) => {
+    try {
+        conn.query(REGISTERED_al,(err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    reg_al:data,
                     message:"success"
                 })
             }

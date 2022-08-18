@@ -46,7 +46,7 @@ mother_route.get("/unblock_baby_name_provider",baby_name_provider_controller.Unb
 //al report
 mother_route.get("/al/report_stat_card1",report_stat_card1_controller.stat_card);
 mother_route.get("/al/report_stat_card2",report_stat_card2_controller.stat_card);
-mother_route.get("/al/one_al_tot_income",astrologer_controller.Al_tot_income);
-
-
+mother_route.get("/al/al_tot_income",astrologer_controller.Al_tot_income);
+mother_route.get("/al/al_pending_tot_income",astrologer_controller.Al_pending_tot_income);
+mother_route.get("/al/reg_al",astrologer_controller.Registered_al);
 module.exports = mother_route;
