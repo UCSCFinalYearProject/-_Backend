@@ -9,8 +9,12 @@ const AppError = require('../../../../utils/appError');
 //Take pending payment amount of astrologer
 exports.Pending_Payment_Amount = (req, res, next) => {
     try {
-
-        conn.query(Astrologer_Pending_Payment_Total,[req.body.aid],(err,data,feild)=>{
+        const value={
+            id:req.body.aid,
+            sdate:req.body.sdate,
+            edate:req.body.edate
+        }
+        conn.query(Astrologer_Pending_Payment_Total,[[req.body.aid,req.body.sdate,req.body.edate]],(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -31,7 +35,7 @@ exports.Pending_Payment_Amount = (req, res, next) => {
 //SELECT ar.receiver_id,SUM(ap.amount) FROM `astrologer_request` ar LEFT JOIN `astrologer_payment` ap ON ar.request_id = ap.request_id WHERE (ar.request_status='0' and ar.receiver_id=1) and (ar.request_date BETWEEN "2022-8-10" and "2022-8-20");
 exports.Astrologer_All_Payment_Total = (req, res, next) => {
     try {
-        const value=[req.body.aid,req.body.sdate,req.body.edate];
+        const value=[req.body.aid];
         conn.query(Astrologer_All_Payment_Total,[value],(err,data,feild)=>{
             if(err){
                 return next(new AppError(err))

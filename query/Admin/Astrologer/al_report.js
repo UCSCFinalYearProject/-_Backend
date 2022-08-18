@@ -3,11 +3,11 @@ exports.STAT_card1 = "SELECT COUNT(*) FROM `astrologer`" ;
 //this month registerd astrologers
 exports.STAT_card2 = "SELECT COUNT(*) FROM `astrologer` WHERE month(registered_at)=month(CURRENT_DATE)" ;
 
-//Astrologer pending paymnets total
+//Astrologer pending payments total
 // exports.Astrologer_Pending_Payment_Total="SELECT ar.receiver_id,SUM(ap.amount) FROM `astrologer_request` ar LEFT JOIN `astrologer_payment` ap ON ar.request_id = ap.request_id WHERE ar.request_status='0' and ar.receiver_id=? and ar.request_date BETWEEN ? and ?;"
-exports.Astrologer_Pending_Payment_Total="SELECT ar.receiver_id,SUM(ap.amount) FROM `astrologer_request` ar LEFT JOIN `astrologer_payment` ap ON ar.request_id = ap.request_id WHERE (ar.request_status='0' and ar.receiver_id=?) and (ar.request_date BETWEEN \"2022-8-10\" and \"2022-8-20\");"
+exports.Astrologer_Pending_Payment_Total="SELECT ar.receiver_id,SUM(ap.amount) FROM `astrologer_request` ar LEFT JOIN `astrologer_payment` ap ON ar.request_id = ap.request_id WHERE (ar.request_status='0' and ar.receiver_id=?) and (ar.request_date BETWEEN ? and ?);"
 
-//Astrologer All paymnets total
+//Astrologer All payments total
 exports.Astrologer_All_Payment_Total="SELECT ar.receiver_id,SUM(ap.amount) FROM `astrologer_request` ar LEFT JOIN `astrologer_payment` ap ON ar.request_id = ap.request_id WHERE (ar.request_status='1' and ar.receiver_id=?) and (ar.request_date BETWEEN \"2022-8-10\" and \"2022-8-20\");"
 
 //Astrologer Response count
