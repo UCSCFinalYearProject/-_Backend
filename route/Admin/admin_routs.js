@@ -8,6 +8,8 @@ const baby_name_provider_controller = require('../../controller/Admin/Name_Provi
 const report_stat_card1_controller = require("../../controller/Admin/Astrologer/Al-Report/report_stat_card1_controller");
 const report_stat_card2_controller = require("../../controller/Admin/Astrologer/Al-Report/report_stat_card2_controller");
 const Astrologer_Report = require("../../controller/Admin/Astrologer/Al-Report/astrologer_report");
+const Np_Report = require("../../controller/Admin/Name_Provider/Np-Report/np_report");
+
 
 
 // Thisrouts for mother
@@ -65,6 +67,17 @@ mother_route.get("/al/Astrologer_Response_Count",Astrologer_Report.Astrologer_Re
 mother_route.get("/al/Astrologer_Request_Count",Astrologer_Report.Astrologer_Request_Count);
 //To take profit distibution
 mother_route.get("/al/Astrologer_profit_distribution",Astrologer_Report.Astrologer_profit_distribution);
+
+//Totake astrologer pending payment amount
+mother_route.get("/np/Pending_Payment_Amount",Np_Report.NP_Pending_Payment_Amount);
+//Totake astrologer all payment amount
+mother_route.get("/np/NP_All_Payment_Total",Np_Report.NP_All_Payment_Total);
+//To take response count of astrologer
+mother_route.get("/np/NP_Response_Count",Np_Report.NP_Response_Count);
+//To take request count of astrologer
+mother_route.get("/np/NP_Request_Count",Np_Report.NP_Request_Count);
+//To take profit distibution
+mother_route.get("/np/NP_profit_distribution",Np_Report.NP_profit_distribution);
 
 
 
