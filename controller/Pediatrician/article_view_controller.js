@@ -5,7 +5,8 @@ const {
     VIEW_single_articles,
     VIEW_articles_comments,
     VIEW_followers,
-    Trending_article
+    Trending_article,
+    no_of_articles
 } = require('../../query/Pediatrician/view_article');
 const { PEDIATRICIAN_MODEL } = require('../../model/Pediatrician/view_article');
 const bcrypt = require('bcryptjs');
@@ -105,6 +106,25 @@ exports.Trending_article = (req, res, next) => {
     // console.log(req.params.article_id)
     try {
         conn.query(Trending_article,(err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    followers:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
+exports.no_of_articles = (req, res, next) => {
+    try {
+        conn.query(no_of_articles,[req.body.doctor_id],(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
