@@ -65,7 +65,7 @@ exports.Unblock_baby_name_provider_controller = (req, res, next) => {
 // total income of name provider
 exports.Np_tot_income = (req, res, next) => {
     try {
-        conn.query(TOT_income,(err,data,feild)=>{
+        conn.query(TOT_income,[req.body.sdate,req.body.edate],(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -85,7 +85,7 @@ exports.Np_tot_income = (req, res, next) => {
 // total pending income of name providers
 exports.Np_pending_tot_income = (req, res, next) => {
     try {
-        conn.query(PENDING_tot_income,  (err,data,feild)=>{
+        conn.query(PENDING_tot_income,[req.body.sdate,req.body.edate],  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -105,7 +105,7 @@ exports.Np_pending_tot_income = (req, res, next) => {
 // total registered name providers
 exports.Registered_np = (req, res, next) => {
     try {
-        conn.query(REGISTERED_np,(err,data,feild)=>{
+        conn.query(REGISTERED_np,[req.body.sdate,req.body.edate],(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -124,7 +124,7 @@ exports.Registered_np = (req, res, next) => {
 // total registered name providers
 exports.Profit_np = (req, res, next) => {
     try {
-        conn.query(PROFIT_np,(err,data,feild)=>{
+        conn.query(PROFIT_np,[req.body.sdate,req.body.edate],(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
