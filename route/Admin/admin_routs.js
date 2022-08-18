@@ -35,15 +35,21 @@ mother_route.get("/astrologerlist",astrologer_controller.registered_astrologers)
 mother_route.get("/block_astrologer",astrologer_controller.Block_astrologers);
 mother_route.get("/unblock_astrologer",astrologer_controller.Unblock_astrologers);
 
+mother_route.get("/view_astrologer_requests",astrologer_controller.View_astrologers_requests);
+
 // This routs for paediatrician
 mother_route.get("/paediatricianlist",paediatrician_controller.registered_pediatrician);
 mother_route.get("/block_paediatrician",paediatrician_controller.Block_pediatrician);
 mother_route.get("/unblock_paediatrician",paediatrician_controller.Unblock_pediatrician);
 
+mother_route.get("/view_paediatrician_requests",paediatrician_controller.View_pediatricians_requests);
+
 // This routs for baby_name_provider
 mother_route.get("/baby_name_providerlist",baby_name_provider_controller.registered_baby_name_provider_controller);
 mother_route.get("/block_baby_name_provider",baby_name_provider_controller.Block_baby_name_provider_controller);
 mother_route.get("/unblock_baby_name_provider",baby_name_provider_controller.Unblock_baby_name_provider_controller);
+
+mother_route.get("/view_baby_name_provider_requests",baby_name_provider_controller.View_baby_name_provider_requests);
 
 //al report
 mother_route.get("/al/report_stat_card1",report_stat_card1_controller.stat_card);
@@ -64,5 +70,9 @@ mother_route.get("/al/Astrologer_profit_distribution",Astrologer_Report.Astrolog
 
 
 
+mother_route.get("/al/al_tot_income",astrologer_controller.Al_tot_income);
+mother_route.get("/al/al_pending_tot_income",astrologer_controller.Al_pending_tot_income);
+mother_route.get("/al/reg_al",astrologer_controller.Registered_al);
+mother_route.get("/al/profit_al",astrologer_controller.Profit_al);
 
 module.exports = mother_route;
