@@ -9,8 +9,12 @@ const AppError = require('../../../../utils/appError');
 //Take pending payment amount of astrologer
 exports.Pending_Payment_Amount = (req, res, next) => {
     try {
-
-        conn.query(Astrologer_Pending_Payment_Total,[req.body.aid],(err,data,feild)=>{
+        const value={
+            id:req.body.aid,
+            sdate:req.body.sdate,
+            edate:req.body.edate
+        }
+        conn.query(Astrologer_Pending_Payment_Total,[[req.body.aid,req.body.sdate,req.body.edate]],(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
