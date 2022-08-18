@@ -60,3 +60,23 @@ exports.Unblock_pediatrician = (req, res, next) => {
 
     }
 }
+
+// pediatrician request list(Y)
+exports.View_pediatricians_requests = (req, res, next) => {
+    try {
+        conn.query(View_Pediatrician_Requests,[req.body.uid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    pediatricians:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
