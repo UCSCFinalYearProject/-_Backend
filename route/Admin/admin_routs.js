@@ -8,6 +8,7 @@ const baby_name_provider_controller = require('../../controller/Admin/Name_Provi
 const report_stat_card1_controller = require("../../controller/Admin/Astrologer/Al-Report/report_stat_card1_controller");
 const report_stat_card2_controller = require("../../controller/Admin/Astrologer/Al-Report/report_stat_card2_controller");
 const Astrologer_Report = require("../../controller/Admin/Astrologer/Al-Report/astrologer_report");
+const ad_dashboard_controller = require("../../controller/Admin/Ad_Dashboard/ad_dashbord_controller");
 const Np_Report = require("../../controller/Admin/Name_Provider/Np-Report/np_report");
 
 
@@ -87,5 +88,11 @@ mother_route.get("/al/al_tot_income",astrologer_controller.Al_tot_income);
 mother_route.get("/al/al_pending_tot_income",astrologer_controller.Al_pending_tot_income);
 mother_route.get("/al/reg_al",astrologer_controller.Registered_al);
 mother_route.get("/al/profit_al",astrologer_controller.Profit_al);
+
+
+mother_route.get("/ad/dashboard_as_count",ad_dashboard_controller.registered_astrologers_count);
+mother_route.get("/ad/dashboard_p_count",ad_dashboard_controller.registered_pediatrician_count);
+mother_route.get("/ad/dashboard_m_count",ad_dashboard_controller.registered_mothers_count);
+mother_route.get("/ad/dashboard_np_count",ad_dashboard_controller.registered_np_count);
 
 module.exports = mother_route;
