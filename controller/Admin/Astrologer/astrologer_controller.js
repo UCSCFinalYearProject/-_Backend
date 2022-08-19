@@ -1,6 +1,8 @@
 const { isEmpty } = require('../../../utils/is_empty');
 const conn = require('../../../service/db_service');
-const {REGISTERED_Astrologers,Block_Astrologers,Unblock_Astrologers, View_Astrologer_Requests} = require('../../../query/Admin/Astrologer/admin_astrologer');
+const {REGISTERED_Astrologers,Block_Astrologers,Unblock_Astrologers, View_Astrologer_Requests,
+
+} = require('../../../query/Admin/Astrologer/admin_astrologer');
 const { MOTHER_MODEL} = require('../../../model/Mother/mother_model');
 const bcrypt = require('bcryptjs');
 const AppError = require('../../../utils/appError');
@@ -145,7 +147,7 @@ exports.Profit_al = (req, res, next) => {
 // astrologer request list(Y)
 exports.View_astrologers_requests = (req, res, next) => {
     try {
-        conn.query(View_Astrologer_Requests,[req.body.uid],  (err,data,feild)=>{
+        conn.query(View_Astrologer_Requests,  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -161,6 +163,27 @@ exports.View_astrologers_requests = (req, res, next) => {
 
     }
 }
+
+// astrologer request view details(Y)
+// exports.View_astrologers_requests_view_details = (req, res, next) => {
+//     try {
+//         conn.query(View_Astrologer_Requests_View_Details,[req.body.uid],  (err,data,feild)=>{
+//
+//             if(err){
+//                 return next(new AppError(err))
+//             }
+//             else{
+//                 res.status(200).json({
+//                     astrologers:data
+//                 })
+//             }
+//
+//         })
+//     } catch ( err ) {
+//
+//     }
+// }
+
 
 
 

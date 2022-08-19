@@ -35,21 +35,24 @@ mother_route.get("/astrologerlist",astrologer_controller.registered_astrologers)
 mother_route.get("/block_astrologer",astrologer_controller.Block_astrologers);
 mother_route.get("/unblock_astrologer",astrologer_controller.Unblock_astrologers);
 
-mother_route.get("/view_astrologer_requests",astrologer_controller.View_astrologers_requests);
+//mother_route.get("/view_astrologer_requests",astrologer_controller.View_astrologers_requests);
+//  mother_route.get("/view_astrologer_requests_view_details",astrologer_controller.View_astrologers_requests_view_details);
 
 // This routs for paediatrician
 mother_route.get("/paediatricianlist",paediatrician_controller.registered_pediatrician);
 mother_route.get("/block_paediatrician",paediatrician_controller.Block_pediatrician);
 mother_route.get("/unblock_paediatrician",paediatrician_controller.Unblock_pediatrician);
 
-mother_route.get("/view_paediatrician_requests",paediatrician_controller.View_pediatricians_requests);
+//mother_route.get("/view_paediatrician_requests",paediatrician_controller.View_pediatricians_requests);
+// mother_route.get("/view_paediatrician_requests_view_details",paediatrician_controller.View_pediatrician_requests_view_details);
 
 // This routs for baby_name_provider
 mother_route.get("/baby_name_providerlist",baby_name_provider_controller.registered_baby_name_provider_controller);
 mother_route.get("/block_baby_name_provider",baby_name_provider_controller.Block_baby_name_provider_controller);
 mother_route.get("/unblock_baby_name_provider",baby_name_provider_controller.Unblock_baby_name_provider_controller);
 
-mother_route.get("/view_baby_name_provider_requests",baby_name_provider_controller.View_baby_name_provider_requests);
+//mother_route.get("/view_baby_name_provider_requests",baby_name_provider_controller.View_baby_name_provider_requests);
+// mother_route.get("/view_baby_name_provider_requests_view_details",baby_name_provider_controller.View_baby_name_provider_requests_view_details);
 
 //al report
 mother_route.get("/al/report_stat_card1",report_stat_card1_controller.stat_card);
