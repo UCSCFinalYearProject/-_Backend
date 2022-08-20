@@ -52,7 +52,7 @@ app.use("/pt" ,  pt_route);
 app.use( errorHandler )
 
 // this is the prot that server is running on
-const PORT = 3000;
+const PORT = 3005;
 
 // finally start the server on 3000 prot
 app.listen(PORT, () => {
