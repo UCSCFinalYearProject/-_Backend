@@ -8,6 +8,9 @@ const baby_name_provider_controller = require('../../controller/Admin/Name_Provi
 const report_stat_card1_controller = require("../../controller/Admin/Astrologer/Al-Report/report_stat_card1_controller");
 const report_stat_card2_controller = require("../../controller/Admin/Astrologer/Al-Report/report_stat_card2_controller");
 const Astrologer_Report = require("../../controller/Admin/Astrologer/Al-Report/astrologer_report");
+const ad_dashboard_controller = require("../../controller/Admin/Ad_Dashboard/ad_dashbord_controller");
+const Np_Report = require("../../controller/Admin/Name_Provider/Np-Report/np_report");
+
 
 const np_report_stat_card1_controller = require("../../controller/Admin/Name_Provider/Np-Report/report_stat_card1_controller");
 const np_report_stat_card2_controller = require("../../controller/Admin/Name_Provider/Np-Report/report_stat_card2_controller");
@@ -68,6 +71,17 @@ mother_route.get("/al/Astrologer_Request_Count",Astrologer_Report.Astrologer_Req
 //To take profit distibution
 mother_route.get("/al/Astrologer_profit_distribution",Astrologer_Report.Astrologer_profit_distribution);
 
+//Totake astrologer pending payment amount
+mother_route.get("/np/Pending_Payment_Amount",Np_Report.NP_Pending_Payment_Amount);
+//Totake astrologer all payment amount
+mother_route.get("/np/NP_All_Payment_Total",Np_Report.NP_All_Payment_Total);
+//To take response count of astrologer
+mother_route.get("/np/NP_Response_Count",Np_Report.NP_Response_Count);
+//To take request count of astrologer
+mother_route.get("/np/NP_Request_Count",Np_Report.NP_Request_Count);
+//To take profit distibution
+mother_route.get("/np/NP_profit_distribution",Np_Report.NP_profit_distribution);
+
 
 
 
@@ -78,6 +92,12 @@ mother_route.get("/al/al_tot_income",astrologer_controller.Al_tot_income);
 mother_route.get("/al/al_pending_tot_income",astrologer_controller.Al_pending_tot_income);
 mother_route.get("/al/reg_al",astrologer_controller.Registered_al);
 mother_route.get("/al/profit_al",astrologer_controller.Profit_al);
+
+
+mother_route.get("/ad/dashboard_as_count",ad_dashboard_controller.registered_astrologers_count);
+mother_route.get("/ad/dashboard_p_count",ad_dashboard_controller.registered_pediatrician_count);
+mother_route.get("/ad/dashboard_m_count",ad_dashboard_controller.registered_mothers_count);
+mother_route.get("/ad/dashboard_np_count",ad_dashboard_controller.registered_np_count);
 
 //np report
 mother_route.get("/np/report_stat_card1",np_report_stat_card1_controller.stat_card);
