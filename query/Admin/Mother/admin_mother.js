@@ -1,4 +1,4 @@
-exports.REGISTERED_Mothers = " SELECT * FROM `parent`" ;
+exports.REGISTERED_Mothers = " SELECT pa.user_id,pa.DP,pa.first_name,pa.last_name,pa.email,pa.STATUS,pa.login_status,COUNT(po.post_id) as postCount FROM `parent` pa LEFT JOIN `post` po on pa.user_id= po.user_id GROUP by pa.user_id;" ;
 exports.NumOfPosts="SELECT COUNT(*) as count_post FROM post WHERE user_id=?";
 exports.NumOfComments="SELECT COUNT(*) as count_comments FROM post_reply WHERE parent_id=?";
 exports.BlockMother="UPDATE `parent` SET `STATUS` = '1' WHERE `parent`.`user_id` = ?"
@@ -8,5 +8,7 @@ exports.MotherPostDetails="SELECT *, COUNT(pr.reply_id) as ReplyCount FROM `post
 exports.MotherPostReplyCount="SELECT COUNT(*) as count_reply FROM post_reply WHERE post_id=?"
 exports.PostComments="SELECT p.email,p.user_id,pr.post_id,pr.reply_id,pr.reply_content , pr.date FROM `post_reply` pr LEFT JOIN `parent` p on p.user_id=pr.parent_id WHERE pr.post_id=?;"
 exports.Mother_Pending_Post_With_Count="SELECT *, COUNT(po.post_id) as post_count FROM pending_post pe LEFT JOIN `post` po on po.user_id = pe.user_id WHERE po.status=1 GROUP BY po.user_id;"
+
+
 
 

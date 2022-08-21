@@ -77,14 +77,18 @@ exports.Mother_Posts_list = (req, res, next) => {
     }
 }
 exports.NOF_Comments = (req, res, next) => {
+    // console.log("#################### req")
+    // console.log(req.body.uid)
+    // console.log(req.query.uid)
     try {
-        conn.query(NumOfComments,[req.body.uid],  (err,data,feild)=>{
+        conn.query(NumOfComments,[req.query.uid],  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
             }
             else{
                 res.status(200).json({
+
                     students:data
                 })
             }
