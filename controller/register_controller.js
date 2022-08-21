@@ -1,11 +1,12 @@
 const { isEmpty } = require('../utils/is_empty');
 const conn = require('../service/db_service');
-const { CHECK_user_pd_email,CHECK_user_al_email,CHECK_user_np_email,REGISTER_User_pd,REGISTER_User_al,REGISTER_User_np} = require('../query/register');
+const { CHECK_user_pd_email,CHECK_user_al_email,EXTRA_TABLE,CHECK_user_np_email,REGISTER_User_pd,REGISTER_User_al,REGISTER_User_np} = require('../query/register');
 //const { STUDENT_MODEL, STUDENT_LOGIN_MODEL } = require('../model/student');
 const bcrypt = require('bcryptjs');
 const AppError = require('../utils/appError');
 const JWT = require('jsonwebtoken');
 const {query} = require("express");
+const {CHECK_EMAIL} = require("../query/student");
 
 exports.user_register = (req, res, next) => {
     if (isEmpty(req.body)) return next( new AppError("form data not found" , 400));
@@ -76,12 +77,22 @@ exports.user_register = (req, res, next) => {
                     res.status(201).json({
                         data: "Name Provider Registration success!"
                     })
+
+
                 })
+
+            })
+            conn.query(EXTRA_TABLE, [[req.body.email,hashedValue,req.body.user_type]], async (err, data, feilds) => {
+                if (err) {
+                    console.log("wrong")
+                }
+                console.log("okay")
 
             })
 
 
         }
+
 
     }
     catch(err){

@@ -32,7 +32,7 @@ app.use(cors({ origin: "*"}))
 app.use(express.json());
 
 // if request come from "localhost:3000/student", then it gose to student_route
-app.use("/student" , student_route);
+app.use("/login" , register_route);
 
 // if request come from "localhost:3000/admin", then it goes to student_route
 app.use("/admin" , admin_route);
@@ -54,7 +54,7 @@ app.use("/reg",register_route)
 app.use( errorHandler )
 
 // this is the prot that server is running on
-const PORT = 3005;
+const PORT = 3000;
 
 // finally start the server on 3000 prot
 app.listen(PORT, () => {
