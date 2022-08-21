@@ -6,6 +6,7 @@ exports.BlockMother="UPDATE `parent` SET `STATUS` = '1' WHERE `parent`.`user_id`
 exports.UnblockMother="UPDATE `parent` SET `STATUS` = '0' WHERE `parent`.`user_id` = ?"
 exports.MotherPostsList="SELECT p.title,p.post_content,p.Date,p.status,p.no_of_likes,p.post_id as PostId,p.category, COUNT(pr.reply_id) as ReplyCount,pc.category, pc.img FROM `post` p LEFT JOIN `post_reply` pr on p.post_id=pr.post_id LEFT JOIN post_category pc ON p.category=pc.id WHERE p.user_id = ? GROUP BY p.post_id"
 // exports.MotherPostDetails="SELECT *, COUNT(pr.reply_id) as ReplyCount FROM `post` p LEFT JOIN `post_reply` pr on p.post_id=pr.post_id WHERE p.post_id = ? GROUP BY p.post_id;"
+
 exports.MotherPostDetails="SELECT p.title,p.post_content,p.Date,p.status,p.no_of_likes,p.post_id as PostId,p.category, COUNT(pr.reply_id) as ReplyCount,pc.category, pc.img FROM `post` p LEFT JOIN `post_reply` pr on p.post_id=pr.post_id LEFT JOIN post_category pc ON p.category=pc.id WHERE p.post_id = ? GROUP BY p.post_id;"
 
 exports.MotherPostReplyCount="SELECT COUNT(*) as count_reply FROM post_reply WHERE post_id=?"
