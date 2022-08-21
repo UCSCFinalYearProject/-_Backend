@@ -12,11 +12,14 @@ const ad_dashboard_controller = require("../../controller/Admin/Ad_Dashboard/ad_
 const Np_Report = require("../../controller/Admin/Name_Provider/Np-Report/np_report");
 
 
+const np_report_stat_card1_controller = require("../../controller/Admin/Name_Provider/Np-Report/report_stat_card1_controller");
+const np_report_stat_card2_controller = require("../../controller/Admin/Name_Provider/Np-Report/report_stat_card2_controller");
 
 // Thisrouts for mother
 mother_route.get("/mother_list",mother_controller.registered_mothers);
 // send uid with req body
 mother_route.get("/mother_nof_post",mother_controller.NOF_Posts);
+mother_route.get("/target_motherDetails",mother_controller.target_motherDetails);
 mother_route.get("/mother_posts_list",mother_controller.Mother_Posts_list);
 mother_route.get("/post_comments_list",mother_controller.Post_Comments_List);
 
@@ -83,7 +86,9 @@ mother_route.get("/np/NP_profit_distribution",Np_Report.NP_profit_distribution);
 
 
 
-
+//al report
+mother_route.get("/al/report_stat_card1",report_stat_card1_controller.stat_card);
+mother_route.get("/al/report_stat_card2",report_stat_card2_controller.stat_card);
 mother_route.get("/al/al_tot_income",astrologer_controller.Al_tot_income);
 mother_route.get("/al/al_pending_tot_income",astrologer_controller.Al_pending_tot_income);
 mother_route.get("/al/reg_al",astrologer_controller.Registered_al);
@@ -94,5 +99,15 @@ mother_route.get("/ad/dashboard_as_count",ad_dashboard_controller.registered_ast
 mother_route.get("/ad/dashboard_p_count",ad_dashboard_controller.registered_pediatrician_count);
 mother_route.get("/ad/dashboard_m_count",ad_dashboard_controller.registered_mothers_count);
 mother_route.get("/ad/dashboard_np_count",ad_dashboard_controller.registered_np_count);
+
+//np report
+mother_route.get("/np/report_stat_card1",np_report_stat_card1_controller.stat_card);
+mother_route.get("/np/report_stat_card2",np_report_stat_card2_controller.stat_card);
+mother_route.get("/np/np_tot_income",baby_name_provider_controller.Np_tot_income);
+mother_route.get("/np/np_pending_tot_income",baby_name_provider_controller.Np_pending_tot_income);
+mother_route.get("/np/reg_np",baby_name_provider_controller.Registered_np);
+mother_route.get("/np/profit_np",baby_name_provider_controller.Profit_np);
+
+
 
 module.exports = mother_route;

@@ -10,7 +10,8 @@ const {
     MotherPostDetails,
     MotherPostReplyCount,
     PostComments,
-    Mother_Pending_Post_With_Count
+    Mother_Pending_Post_With_Count,
+    target_motherDetails
 } = require('../../../query/Admin/Mother/admin_mother');
 const { MOTHER_MODEL} = require('../../../model/Mother/mother_model');
 const bcrypt = require('bcryptjs');
@@ -57,17 +58,36 @@ exports.NOF_Posts = (req, res, next) => {
 
     }
 }
-exports.Mother_Posts_list = (req, res, next) => {
+exports.target_motherDetails = (req, res, next) => {
     try {
 
-        conn.query(MotherPostsList,[req.body.uid], (err,data,feild)=>{
+        conn.query(target_motherDetails,[req.query.uid], (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
             }
             else{
                 res.status(200).json({
-                    students:data
+                    Data:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.Mother_Posts_list = (req, res, next) => {
+    try {
+
+        conn.query(MotherPostsList,[req.query.uid], (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    Data:data
                 })
             }
 
@@ -138,7 +158,7 @@ exports.Unblock_Mother = (req, res, next) => {
 }
 exports.Mother_Post_Details = (req, res, next) => {
     try {
-        conn.query(MotherPostDetails,[req.body.pid],  (err,data,feild)=>{
+        conn.query(MotherPostDetails,[req.query.pid],  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))

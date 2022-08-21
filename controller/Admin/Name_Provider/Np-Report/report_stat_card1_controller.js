@@ -1,7 +1,7 @@
 const { isEmpty } = require('../../../../utils/is_empty');
 const conn = require('../../../../service/db_service');
 const {STAT_card1} = require('../../../../query/Admin/Name-Provider/np_report');
-const { STAT_CARD1_MODEL } = require('../../../../model/Admin/Name-Provider/Np-Report/report_stat_card1_model');
+//const { STAT_CARD1_MODEL } = require('../../../../model/Admin/Name-Provider/Np-Report/report_stat_card1_model');
 const bcrypt = require('bcryptjs');
 const AppError = require('../../../../utils/appError');
 const JWT = require('jsonwebtoken');
