@@ -18,3 +18,15 @@ exports.NP_Request_Count="SELECT a.receiver_id, COUNT(a.request_id) as reQCount 
 
 //NP profit distribution of year
 exports.NP_profit_distribution="SELECT month(ap.date_time),SUM(ap.amount) FROM `baby_name_provider_payment` ap LEFT JOIN `baby_name_provider_request` ar on ap.request_id = ar.request_id WHERE ar.receiver_id=? AND ap.date_time BETWEEN ? AND ? group by month(ap.date_time);"
+
+//this total income of astrologers in between time range
+exports.TOT_income = "SELECT SUM(amount) FROM baby_name_provider_payment WHERE status='1' AND date_time BETWEEN ? AND ?" ;
+
+//pending total income of astrologers in between time range
+exports.PENDING_tot_income = "SELECT SUM(amount) FROM baby_name_provider_payment WHERE status='0' AND date_time BETWEEN ? AND ?" ;
+
+//registered astrologers in between time range
+exports.REGISTERED_np="select month(registered_at), count(*) from baby_name_provider WHERE registered_at BETWEEN ? AND ? group by month(registered_at)";
+
+//profit from astrologers in between time range
+exports.PROFIT_np="SELECT month(date_time),SUM(amount) FROM baby_name_provider_payment WHERE date_time BETWEEN ? AND ? GROUP BY month(date_time)";
