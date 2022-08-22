@@ -15,6 +15,7 @@ exports.student_login = (req, res, next) => {
         "email":email,
         "password":password
     }
+    console.log(data1)
     if (isEmpty(data1)) return next( new AppError("form data not found" , 400));
     try {
         const { error } = STUDENT_LOGIN_MODEL.validate(data1);
