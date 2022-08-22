@@ -7,9 +7,16 @@ const AppError = require('../utils/appError');
 const JWT = require('jsonwebtoken');
 const {query} = require("express");
 
+const {USER_MODEL} = require("../model/register");
+
 exports.user_register = (req, res, next) => {
     if (isEmpty(req.body)) return next( new AppError("form data not found" , 400));
     try{
+
+        //const { error } = USER_MODEL.validate([req.body.name,req.body.email,req.body.password]);
+       // console.log(error)
+        //if (error) return next( new AppError( error.details[0].message , 400));
+
         //if user type is 1 then insert data into pediatrician table
         if (req.body.user_type == 1) {
             let type = 'PT'
