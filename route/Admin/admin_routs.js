@@ -19,6 +19,7 @@ const np_report_stat_card2_controller = require("../../controller/Admin/Name_Pro
 mother_route.get("/mother_list",mother_controller.registered_mothers);
 // send uid with req body
 mother_route.get("/mother_nof_post",mother_controller.NOF_Posts);
+mother_route.get("/target_motherDetails",mother_controller.target_motherDetails);
 mother_route.get("/mother_posts_list",mother_controller.Mother_Posts_list);
 mother_route.get("/post_comments_list",mother_controller.Post_Comments_List);
 

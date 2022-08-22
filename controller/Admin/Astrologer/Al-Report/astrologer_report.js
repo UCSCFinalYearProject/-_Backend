@@ -12,6 +12,11 @@ exports.Pending_Payment_Amount = (req, res, next) => {
     // console.log(" HI -----------------------------");
     // console.log(req.body);
     // console.log(" End -----------------------------");
+    // {
+    //     "aid":1,
+    //     "sdate":"2022/01/01",
+    //     "edate":"2022/12/12"
+    // }
 
     try {
 
