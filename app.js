@@ -21,6 +21,7 @@ const app = express();
 
 // require cors package
 const cors = require('cors');
+const register_route = require("./route/register_route");
 
 
 // use cors middleware to enable CORS with various options
@@ -48,6 +49,7 @@ app.use("/np" ,  np_route);
 // if request come from "localhost:3000/pt", then it goes to pediatrician_route
 app.use("/pt" ,  pt_route);
 
+app.use("/reg",register_route)
 // use errorhandler middleware to handle errors
 app.use( errorHandler )
 
