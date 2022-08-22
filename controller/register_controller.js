@@ -29,22 +29,20 @@ exports.user_register = (req, res, next) => {
                 conn.query(REGISTER_User_pd, [[req.body.name, hashedValue, req.body.email]],async (err, data, feilds) => {
 
                     if (err) return next(new AppError(err, 500));
+                    conn.query(COMMON_user, [[req.body.email, hashedValue,type]],async (err, data, feilds) => {
 
-                    res.status(201).json({
-                        data: "pediatrician Registration success!"
+                        if (err) return next(new AppError(err, 500));
+
+                        res.status(201).json({
+                            data: "pediatrician Registration success!"
+                        })
                     })
+
+
+
                 })
 
                 //insert data into common user table
-                conn.query(COMMON_user, [[req.body.email, hashedValue,type]],async (err, data, feilds) => {
-
-                    if (err) return next(new AppError(err, 500));
-
-                    res.status(201).json({
-                        data: "pediatrician Registration success!"
-                    })
-                })
-
 
 
             })
@@ -67,20 +65,19 @@ exports.user_register = (req, res, next) => {
                 conn.query(REGISTER_User_al, [[req.body.name, hashedValue, req.body.email,req.body.service_charge]],async (err, data, feilds) => {
 
                     if (err) return next(new AppError(err, 500));
+                    //insert data into common user table
+                    conn.query(COMMON_user, [[req.body.email, hashedValue,type]],async (err, data, feilds) => {
 
-                    res.status(201).json({
-                        data: "Astrologer Registration success!"
+                        if (err) return next(new AppError(err, 500));
+
+                        res.status(201).json({
+                            data: "Astrologer Registration success!"
+                        })
                     })
-                })
-                //insert data into common user table
-                conn.query(COMMON_user, [[req.body.email, hashedValue,type]],async (err, data, feilds) => {
 
-                    if (err) return next(new AppError(err, 500));
 
-                    res.status(201).json({
-                        data: "Astrologer Registration success!"
-                    })
                 })
+
 
             })
 
@@ -102,20 +99,18 @@ exports.user_register = (req, res, next) => {
 
                     if (err) return next(new AppError(err, 500));
 
-                    res.status(201).json({
-                        data: "Name Provider Registration success!"
+                    //insert data into common user table
+                    conn.query(COMMON_user, [[req.body.email, hashedValue,type]],async (err, data, feilds) => {
+
+                        if (err) return next(new AppError(err, 500));
+
+                        res.status(201).json({
+                            data: "Name Provider Registration success!"
+                        })
                     })
                 })
 
-                //insert data into common user table
-                conn.query(COMMON_user, [[req.body.email, hashedValue,type]],async (err, data, feilds) => {
 
-                    if (err) return next(new AppError(err, 500));
-
-                    res.status(201).json({
-                        data: "Name Provider Registration success!"
-                    })
-                })
 
             })
 
