@@ -9,3 +9,5 @@ exports.COMMON_user = "INSERT INTO `common_user_details` (`email`, `password`, `
 exports.CHECK_user_pd_email = "SELECT * FROM paediatrician WHERE email = ?";
 exports.CHECK_user_al_email = "SELECT * FROM astrologer WHERE email = ?";
 exports.CHECK_user_np_email = "SELECT * FROM baby_name_provider WHERE email = ?";
+exports.EXTRA_TABLE = "INSERT INTO `common_user_details` VALUES ( ?,?,?,)";
+
