@@ -17,6 +17,8 @@ exports.MotherPostDetails="SELECT p.title,p.post_content,p.Date,p.status,p.no_of
 
 exports.MotherPostReplyCount="SELECT COUNT(*) as count_reply FROM post_reply WHERE post_id=?"
 exports.delete_comments="DELETE FROM post_reply WHERE `post_reply`.`reply_id` = ?"
+exports.warning_for_comments="UPDATE `parent` SET `warning_messages` = ? WHERE `parent`.`user_id` = ?;"
+
 exports.PostComments="SELECT p.email,p.user_id,pr.post_id,pr.reply_id,pr.reply_content , pr.date FROM `post_reply` pr LEFT JOIN `parent` p on p.user_id=pr.parent_id WHERE pr.post_id=?;"
 exports.Mother_Pending_Post_With_Count="SELECT *, COUNT(po.post_id) as post_count FROM pending_post pe LEFT JOIN `post` po on po.user_id = pe.user_id WHERE po.status=1 GROUP BY po.user_id;"
 

@@ -11,7 +11,7 @@ const {
     MotherPostReplyCount,
     PostComments,
     Mother_Pending_Post_With_Count,
-    target_motherDetails, ShowHidePost, HidePost, delete_comments
+    target_motherDetails, ShowHidePost, HidePost, delete_comments, warning_for_comments
 } = require('../../../query/Admin/Mother/admin_mother');
 const { MOTHER_MODEL} = require('../../../model/Mother/mother_model');
 const bcrypt = require('bcryptjs');
@@ -250,6 +250,23 @@ exports.Post_Comments_List = (req, res, next) => {
 exports.delete_comments = (req, res, next) => {
     try {
         conn.query(delete_comments,[req.query.cid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"Success"
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.warning_for_comments = (req, res, next) => {
+    try {
+        conn.query(warning_for_comments,[req.query.mg,req.query.uid],  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
