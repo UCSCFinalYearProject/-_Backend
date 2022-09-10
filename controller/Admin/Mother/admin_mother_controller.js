@@ -11,7 +11,7 @@ const {
     MotherPostReplyCount,
     PostComments,
     Mother_Pending_Post_With_Count,
-    target_motherDetails
+    target_motherDetails, ShowHidePost, HidePost, delete_comments
 } = require('../../../query/Admin/Mother/admin_mother');
 const { MOTHER_MODEL} = require('../../../model/Mother/mother_model');
 const bcrypt = require('bcryptjs');
@@ -118,7 +118,44 @@ exports.NOF_Comments = (req, res, next) => {
 
     }
 }
+// Hide Post
+exports.HidePost = (req, res, next) => {
+    try {
+        conn.query(HidePost,[req.query.pid],  (err,data,feild)=>{
 
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"success"
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+// UnHide Post
+exports.ShowHidePost = (req, res, next) => {
+    try {
+        conn.query(ShowHidePost,[req.query.pid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"success"
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
 // block mother
 exports.Block_Mother = (req, res, next) => {
     try {
@@ -195,7 +232,7 @@ exports.Mother_Post_Reply_Count = (req, res, next) => {
 }
 exports.Post_Comments_List = (req, res, next) => {
     try {
-        conn.query(PostComments,[req.body.pid],  (err,data,feild)=>{
+        conn.query(PostComments,[req.query.pid],  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -203,6 +240,23 @@ exports.Post_Comments_List = (req, res, next) => {
             else{
                 res.status(200).json({
                     data:data
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.delete_comments = (req, res, next) => {
+    try {
+        conn.query(delete_comments,[req.query.cid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"Success"
                 })
             }
         })
