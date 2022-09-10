@@ -122,7 +122,9 @@ exports.NOF_Comments = (req, res, next) => {
 // block mother
 exports.Block_Mother = (req, res, next) => {
     try {
-        conn.query(BlockMother,[req.body.uid],  (err,data,feild)=>{
+        // console.log("id"+req.body.uid)
+        // console.log("mg"+req.body.mg)
+        conn.query(BlockMother,[req.query.mg,req.query.uid],  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -141,7 +143,8 @@ exports.Block_Mother = (req, res, next) => {
 // unblock mother
 exports.Unblock_Mother = (req, res, next) => {
     try {
-        conn.query(UnblockMother,[req.body.uid],  (err,data,feild)=>{
+        // console.log("uid ---- "+req.query.uid)
+        conn.query(UnblockMother,[req.query.uid],  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
