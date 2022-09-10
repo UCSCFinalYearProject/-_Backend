@@ -23,6 +23,8 @@ mother_route.get("/target_motherDetails",mother_controller.target_motherDetails)
 mother_route.get("/mother_posts_list",mother_controller.Mother_Posts_list);
 mother_route.get("/post_comments_list",mother_controller.Post_Comments_List);
 mother_route.get("/delete_comments",mother_controller.delete_comments);
+mother_route.get("/warning_for_comments",mother_controller.warning_for_comments);
+
 
 mother_route.get("/Mother_Post_Details",mother_controller.Mother_Post_Details);
 mother_route.get("/Mother_Post_Reply_Count",mother_controller.Mother_Post_Reply_Count);
