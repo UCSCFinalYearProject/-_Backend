@@ -22,6 +22,7 @@ mother_route.get("/mother_nof_post",mother_controller.NOF_Posts);
 mother_route.get("/target_motherDetails",mother_controller.target_motherDetails);
 mother_route.get("/mother_posts_list",mother_controller.Mother_Posts_list);
 mother_route.get("/post_comments_list",mother_controller.Post_Comments_List);
+mother_route.get("/delete_comments",mother_controller.delete_comments);
 
 mother_route.get("/Mother_Post_Details",mother_controller.Mother_Post_Details);
 mother_route.get("/Mother_Post_Reply_Count",mother_controller.Mother_Post_Reply_Count);
@@ -35,6 +36,9 @@ mother_route.get("/mother_nof_comments",mother_controller.NOF_Comments);
 mother_route.get("/block_mother",mother_controller.Block_Mother);
 mother_route.get("/unblock_mother",mother_controller.Unblock_Mother);
 
+// mother post hide unhide
+mother_route.get("/HidePost",mother_controller.HidePost);
+mother_route.get("/ShowHidePost",mother_controller.ShowHidePost);
 
 // This routs for Astrologer
 mother_route.get("/astrologerlist",astrologer_controller.registered_astrologers);
