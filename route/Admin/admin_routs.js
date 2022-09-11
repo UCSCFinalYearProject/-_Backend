@@ -57,6 +57,8 @@ mother_route.get("/block_astrologer",astrologer_controller.Block_astrologers);
 mother_route.get("/unblock_astrologer",astrologer_controller.Unblock_astrologers);
 mother_route.get("/Astrologers_Month_Profit",astrologer_controller.Astrologers_Month_Profit);
 mother_route.get("/Astrologers_Data_with_profit",astrologer_controller.Astrologers_Data_with_profit);
+mother_route.get("/accept_astrologer",astrologer_controller.accept_astrologer);
+mother_route.get("/reject_astrologer",astrologer_controller.reject_astrologer);
 
 
 
@@ -71,6 +73,10 @@ mother_route.get("/block_paediatrician",paediatrician_controller.Block_pediatric
 mother_route.get("/unblock_paediatrician",paediatrician_controller.Unblock_pediatrician);
 
 mother_route.get("/view_paediatrician_requests",paediatrician_controller.View_pediatricians_requests);
+mother_route.get("/accept_pediatrician",paediatrician_controller.accept_pediatrician);
+mother_route.get("/reject_pediatrician",paediatrician_controller.reject_pediatrician);
+
+
 
 // This routs for baby_name_provider
 mother_route.get("/RegisterdNPCount",baby_name_provider_controller.Registerd_np_Count);
@@ -81,6 +87,8 @@ mother_route.get("/block_baby_name_provider",baby_name_provider_controller.Block
 mother_route.get("/unblock_baby_name_provider",baby_name_provider_controller.Unblock_baby_name_provider_controller);
 mother_route.get("/NP_Month_Profit",baby_name_provider_controller.NP_Month_Profit);
 mother_route.get("/NP_Data_with_profit",baby_name_provider_controller.NP_Data_with_profit);
+mother_route.get("/accept_np",baby_name_provider_controller.accept_np);
+mother_route.get("/reject_np",baby_name_provider_controller.reject_np);
 
 mother_route.get("/view_baby_name_provider_requests",baby_name_provider_controller.View_baby_name_provider_requests);
 

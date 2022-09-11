@@ -5,7 +5,10 @@ const {REGISTERED_baby_name_provider_controller,Block_baby_name_provider_control
     Blocked_Name_Provider_Count,
     Pending_Name_Provider_Count,
     NP_Data_with_profit,
-    NP_Month_Profit
+    NP_Month_Profit,
+    Baby_Name_Provider_Requests,
+    accept_np,
+    reject_np
 } = require('../../../query/Admin/Name-Provider/admin_name_provider');
 const { MOTHER_MODEL} = require('../../../model/Mother/mother_model');
 const bcrypt = require('bcryptjs');
@@ -124,7 +127,7 @@ exports.Unblock_baby_name_provider_controller = (req, res, next) => {
 // Name Provider request list(Y)
 exports.View_baby_name_provider_requests = (req, res, next) => {
     try {
-        conn.query(Baby_Name_Provider_Requests,[req.body.uid],  (err,data,feild)=>{
+        conn.query(Baby_Name_Provider_Requests,  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -256,6 +259,41 @@ exports.NP_Month_Profit = (req, res, next) => {
     }
 }
 
+
+exports.accept_np = (req, res, next) => {
+    try {
+        conn.query(accept_np,[req.query.uid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"success"
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.reject_np = (req, res, next) => {
+    try {
+        conn.query(reject_np,[req.query.uid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"success"
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
 
 
 
