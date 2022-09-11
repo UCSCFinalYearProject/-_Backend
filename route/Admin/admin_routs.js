@@ -49,13 +49,23 @@ mother_route.get("/rejectPost",mother_controller.rejectPost);
 
 
 // This routs for Astrologer
+mother_route.get("/RegisterdastrologerCount",astrologer_controller.Registerd_astrologers_Count);
+mother_route.get("/BlockedastrologerCount",astrologer_controller.Blocked_astrologers_Count);
+mother_route.get("/PendingastrologerCount",astrologer_controller.Pending_astrologers_Count);
 mother_route.get("/astrologerlist",astrologer_controller.registered_astrologers);
 mother_route.get("/block_astrologer",astrologer_controller.Block_astrologers);
 mother_route.get("/unblock_astrologer",astrologer_controller.Unblock_astrologers);
+mother_route.get("/Astrologers_Month_Profit",astrologer_controller.Astrologers_Month_Profit);
+mother_route.get("/Astrologers_Data_with_profit",astrologer_controller.Astrologers_Data_with_profit);
+
+
 
 mother_route.get("/view_astrologer_requests",astrologer_controller.View_astrologers_requests);
 
 // This routs for paediatrician
+mother_route.get("/RegisterdpaediatricianCount",paediatrician_controller.Registerd_paediatrician_Count);
+mother_route.get("/BlockedpaediatricianCount",paediatrician_controller.Blocked_paediatrician_Count);
+mother_route.get("/PendingpaediatricianCount",paediatrician_controller.Pending_paediatrician_Count);
 mother_route.get("/paediatricianlist",paediatrician_controller.registered_pediatrician);
 mother_route.get("/block_paediatrician",paediatrician_controller.Block_pediatrician);
 mother_route.get("/unblock_paediatrician",paediatrician_controller.Unblock_pediatrician);
@@ -63,9 +73,14 @@ mother_route.get("/unblock_paediatrician",paediatrician_controller.Unblock_pedia
 mother_route.get("/view_paediatrician_requests",paediatrician_controller.View_pediatricians_requests);
 
 // This routs for baby_name_provider
+mother_route.get("/RegisterdNPCount",baby_name_provider_controller.Registerd_np_Count);
+mother_route.get("/BlockedNPCount",baby_name_provider_controller.Blocked_np_Count);
+mother_route.get("/PendingNPCount",baby_name_provider_controller.Pending_np_Count);
 mother_route.get("/baby_name_providerlist",baby_name_provider_controller.registered_baby_name_provider_controller);
 mother_route.get("/block_baby_name_provider",baby_name_provider_controller.Block_baby_name_provider_controller);
 mother_route.get("/unblock_baby_name_provider",baby_name_provider_controller.Unblock_baby_name_provider_controller);
+mother_route.get("/NP_Month_Profit",baby_name_provider_controller.NP_Month_Profit);
+mother_route.get("/NP_Data_with_profit",baby_name_provider_controller.NP_Data_with_profit);
 
 mother_route.get("/view_baby_name_provider_requests",baby_name_provider_controller.View_baby_name_provider_requests);
 
