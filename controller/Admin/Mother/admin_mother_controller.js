@@ -11,7 +11,8 @@ const {
     MotherPostReplyCount,
     PostComments,
     Mother_Pending_Post_With_Count,
-    target_motherDetails, ShowHidePost, HidePost, delete_comments, warning_for_comments
+    target_motherDetails, ShowHidePost, HidePost, delete_comments, warning_for_comments, acceptPost, rejectPost,
+    SinglePostDetails, Check_single_mother_Posts_list
 } = require('../../../query/Admin/Mother/admin_mother');
 const { MOTHER_MODEL} = require('../../../model/Mother/mother_model');
 const bcrypt = require('bcryptjs');
@@ -156,6 +157,42 @@ exports.ShowHidePost = (req, res, next) => {
 
     }
 }
+exports.acceptPost = (req, res, next) => {
+    try {
+        conn.query(acceptPost,[req.query.pid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"success"
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.rejectPost = (req, res, next) => {
+    try {
+        conn.query(rejectPost,[req.query.pid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"success"
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
 // block mother
 exports.Block_Mother = (req, res, next) => {
     try {
@@ -199,6 +236,40 @@ exports.Unblock_Mother = (req, res, next) => {
 exports.Mother_Post_Details = (req, res, next) => {
     try {
         conn.query(MotherPostDetails,[req.query.pid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    data:data
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.ChecksinglemotherPostslist = (req, res, next) => {
+    try {
+        conn.query(Check_single_mother_Posts_list,[req.query.uid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    data:data
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.Single_Post_Details = (req, res, next) => {
+    try {
+        conn.query(SinglePostDetails,[req.query.pid],  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
