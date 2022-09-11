@@ -1,7 +1,8 @@
 const { isEmpty } = require('../../../utils/is_empty');
 const conn = require('../../../service/db_service');
 const {REGISTERED_Pediatrician,Block_Pediatrician,Unblock_Pediatrician, Registerd_paediatrician_Count,
-    Blocked_paediatrician_Count, Pending_paediatrician_Count
+    Blocked_paediatrician_Count, Pending_paediatrician_Count, View_Pediatrician_Requests, reject_pediatrician,
+    accept_pediatrician
 } = require('../../../query/Admin/Pediatrician/admin_pediatrician');
 const { MOTHER_MODEL} = require('../../../model/Mother/mother_model');
 const bcrypt = require('bcryptjs');
@@ -116,7 +117,7 @@ exports.Unblock_pediatrician = (req, res, next) => {
 // pediatrician request list(Y)
 exports.View_pediatricians_requests = (req, res, next) => {
     try {
-        conn.query(View_Pediatrician_Requests,[req.body.uid],  (err,data,feild)=>{
+        conn.query(View_Pediatrician_Requests,  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -127,6 +128,40 @@ exports.View_pediatricians_requests = (req, res, next) => {
                 })
             }
 
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.accept_pediatrician = (req, res, next) => {
+    try {
+        conn.query(accept_pediatrician,[req.query.uid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"success"
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.reject_pediatrician = (req, res, next) => {
+    try {
+        conn.query(reject_pediatrician,[req.query.uid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"success"
+                })
+            }
         })
     } catch ( err ) {
 

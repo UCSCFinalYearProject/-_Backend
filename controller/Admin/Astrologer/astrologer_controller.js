@@ -1,7 +1,8 @@
 const { isEmpty } = require('../../../utils/is_empty');
 const conn = require('../../../service/db_service');
 const {REGISTERED_Astrologers,Block_Astrologers,Unblock_Astrologers, View_Astrologer_Requests, Pending_Astrologer_Count,
-    Blocked_Astrologer_Count, Registerd_Astrologer_Count, Astrologers_Month_Profit, Astrologers_Data_with_profit
+    Blocked_Astrologer_Count, Registerd_Astrologer_Count, Astrologers_Month_Profit, Astrologers_Data_with_profit,
+    accept_astrologer, reject_astrologer
 } = require('../../../query/Admin/Astrologer/admin_astrologer');
 const { MOTHER_MODEL} = require('../../../model/Mother/mother_model');
 const bcrypt = require('bcryptjs');
@@ -216,7 +217,7 @@ exports.Profit_al = (req, res, next) => {
 // astrologer request list(Y)
 exports.View_astrologers_requests = (req, res, next) => {
     try {
-        conn.query(View_Astrologer_Requests,[req.body.uid],  (err,data,feild)=>{
+        conn.query(View_Astrologer_Requests,  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -246,6 +247,40 @@ exports.Astrologers_Month_Profit = (req, res, next) => {
                 })
             }
 
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.accept_astrologer = (req, res, next) => {
+    try {
+        conn.query(accept_astrologer,[req.query.uid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"success"
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.reject_astrologer = (req, res, next) => {
+    try {
+        conn.query(reject_astrologer,[req.query.uid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"success"
+                })
+            }
         })
     } catch ( err ) {
 
