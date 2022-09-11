@@ -28,6 +28,9 @@ mother_route.get("/warning_for_comments",mother_controller.warning_for_comments)
 
 mother_route.get("/Mother_Post_Details",mother_controller.Mother_Post_Details);
 mother_route.get("/Mother_Post_Reply_Count",mother_controller.Mother_Post_Reply_Count);
+mother_route.get("/Single_Post_Details",mother_controller.Single_Post_Details);
+mother_route.get("/Check_single_mother_Posts_list",mother_controller.ChecksinglemotherPostslist);
+
 
 // for mother pending post list tale
 mother_route.get("/Mother_Pending_Post_With_Count",mother_controller.Mother_Pending_Post_With_Count);
@@ -41,6 +44,9 @@ mother_route.get("/unblock_mother",mother_controller.Unblock_Mother);
 // mother post hide unhide
 mother_route.get("/HidePost",mother_controller.HidePost);
 mother_route.get("/ShowHidePost",mother_controller.ShowHidePost);
+mother_route.get("/acceptPost",mother_controller.acceptPost);
+mother_route.get("/rejectPost",mother_controller.rejectPost);
+
 
 // This routs for Astrologer
 mother_route.get("/astrologerlist",astrologer_controller.registered_astrologers);
