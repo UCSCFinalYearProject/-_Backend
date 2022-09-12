@@ -1,11 +1,21 @@
 const { isEmpty } = require('../../../utils/is_empty');
 const conn = require('../../../service/db_service');
-const {REGISTERED_baby_name_provider_controller,Block_baby_name_provider_controller,Unblock_baby_name_provider_controller} = require('../../../query/Admin/Name-Provider/admin_name_provider');
+const {REGISTERED_baby_name_provider_controller,Block_baby_name_provider_controller,Unblock_baby_name_provider_controller,
+    Registerd_Name_Provider_Count,
+    Blocked_Name_Provider_Count,
+    Pending_Name_Provider_Count,
+    NP_Data_with_profit,
+    NP_Month_Profit,
+    Baby_Name_Provider_Requests,
+    accept_np,
+    reject_np
+} = require('../../../query/Admin/Name-Provider/admin_name_provider');
 const { MOTHER_MODEL} = require('../../../model/Mother/mother_model');
 const bcrypt = require('bcryptjs');
 const AppError = require('../../../utils/appError');
 const JWT = require('jsonwebtoken');
 const {TOT_income, PENDING_tot_income, REGISTERED_np, PROFIT_np} = require("../../../query/Admin/Name-Provider/np_report");
+const {Astrologers_Data_with_profit, Astrologers_Month_Profit} = require("../../../query/Admin/Astrologer/admin_astrologer");
 
 exports.registered_baby_name_provider_controller = (req, res, next) => {
     try {
@@ -15,7 +25,7 @@ exports.registered_baby_name_provider_controller = (req, res, next) => {
             }
             else{
                 res.status(200).json({
-                    paediatrician:data
+                    np:data
                 })
             }
 
@@ -24,10 +34,62 @@ exports.registered_baby_name_provider_controller = (req, res, next) => {
 
     }
 }
+
+exports.Registerd_np_Count = (req, res, next) => {
+    try {
+        conn.query(Registerd_Name_Provider_Count, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    data:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.Blocked_np_Count = (req, res, next) => {
+    try {
+        conn.query(Blocked_Name_Provider_Count, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    data:data
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.Pending_np_Count = (req, res, next) => {
+    try {
+        conn.query(Pending_Name_Provider_Count, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    data:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
 // block NP
 exports.Block_baby_name_provider_controller = (req, res, next) => {
     try {
-        conn.query(Block_baby_name_provider_controller,[req.body.uid],  (err,data,feild)=>{
+        conn.query(Block_baby_name_provider_controller,[req.query.mg,req.query.uid],  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -46,7 +108,7 @@ exports.Block_baby_name_provider_controller = (req, res, next) => {
 // unblock NP
 exports.Unblock_baby_name_provider_controller = (req, res, next) => {
     try {
-        conn.query(Unblock_baby_name_provider_controller,[req.body.uid],  (err,data,feild)=>{
+        conn.query(Unblock_baby_name_provider_controller,[req.query.uid],  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -65,7 +127,7 @@ exports.Unblock_baby_name_provider_controller = (req, res, next) => {
 // Name Provider request list(Y)
 exports.View_baby_name_provider_requests = (req, res, next) => {
     try {
-        conn.query(Baby_Name_Provider_Requests,[req.body.uid],  (err,data,feild)=>{
+        conn.query(Baby_Name_Provider_Requests,  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -160,6 +222,79 @@ exports.Profit_np = (req, res, next) => {
 
     }
 }
+exports.NP_Data_with_profit = (req, res, next) => {
+    try {
+        conn.query(NP_Data_with_profit, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    np:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.NP_Month_Profit = (req, res, next) => {
+    try {
+
+        conn.query(NP_Month_Profit,[req.query.sdate,req.query.edate], (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    Data:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
+
+exports.accept_np = (req, res, next) => {
+    try {
+        conn.query(accept_np,[req.query.uid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"success"
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.reject_np = (req, res, next) => {
+    try {
+        conn.query(reject_np,[req.query.uid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"success"
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+
 
 
 

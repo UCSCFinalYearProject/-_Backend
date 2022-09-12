@@ -11,7 +11,8 @@ const {
     MotherPostReplyCount,
     PostComments,
     Mother_Pending_Post_With_Count,
-    target_motherDetails
+    target_motherDetails, ShowHidePost, HidePost, delete_comments, warning_for_comments, acceptPost, rejectPost,
+    SinglePostDetails, Check_single_mother_Posts_list
 } = require('../../../query/Admin/Mother/admin_mother');
 const { MOTHER_MODEL} = require('../../../model/Mother/mother_model');
 const bcrypt = require('bcryptjs');
@@ -118,11 +119,86 @@ exports.NOF_Comments = (req, res, next) => {
 
     }
 }
+// Hide Post
+exports.HidePost = (req, res, next) => {
+    try {
+        conn.query(HidePost,[req.query.pid],  (err,data,feild)=>{
 
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"success"
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+// UnHide Post
+exports.ShowHidePost = (req, res, next) => {
+    try {
+        conn.query(ShowHidePost,[req.query.pid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"success"
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.acceptPost = (req, res, next) => {
+    try {
+        conn.query(acceptPost,[req.query.pid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"success"
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.rejectPost = (req, res, next) => {
+    try {
+        conn.query(rejectPost,[req.query.pid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"success"
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
 // block mother
 exports.Block_Mother = (req, res, next) => {
     try {
-        conn.query(BlockMother,[req.body.uid],  (err,data,feild)=>{
+        // console.log("id"+req.body.uid)
+        // console.log("mg"+req.body.mg)
+        conn.query(BlockMother,[req.query.mg,req.query.uid],  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -141,7 +217,8 @@ exports.Block_Mother = (req, res, next) => {
 // unblock mother
 exports.Unblock_Mother = (req, res, next) => {
     try {
-        conn.query(UnblockMother,[req.body.uid],  (err,data,feild)=>{
+        // console.log("uid ---- "+req.query.uid)
+        conn.query(UnblockMother,[req.query.uid],  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -159,6 +236,40 @@ exports.Unblock_Mother = (req, res, next) => {
 exports.Mother_Post_Details = (req, res, next) => {
     try {
         conn.query(MotherPostDetails,[req.query.pid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    data:data
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.ChecksinglemotherPostslist = (req, res, next) => {
+    try {
+        conn.query(Check_single_mother_Posts_list,[req.query.uid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    data:data
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.Single_Post_Details = (req, res, next) => {
+    try {
+        conn.query(SinglePostDetails,[req.query.pid],  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -192,7 +303,7 @@ exports.Mother_Post_Reply_Count = (req, res, next) => {
 }
 exports.Post_Comments_List = (req, res, next) => {
     try {
-        conn.query(PostComments,[req.body.pid],  (err,data,feild)=>{
+        conn.query(PostComments,[req.query.pid],  (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -200,6 +311,40 @@ exports.Post_Comments_List = (req, res, next) => {
             else{
                 res.status(200).json({
                     data:data
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.delete_comments = (req, res, next) => {
+    try {
+        conn.query(delete_comments,[req.query.cid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"Success"
+                })
+            }
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.warning_for_comments = (req, res, next) => {
+    try {
+        conn.query(warning_for_comments,[req.query.mg,req.query.uid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    message:"Success"
                 })
             }
         })

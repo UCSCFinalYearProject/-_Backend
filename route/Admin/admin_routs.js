@@ -22,9 +22,15 @@ mother_route.get("/mother_nof_post",mother_controller.NOF_Posts);
 mother_route.get("/target_motherDetails",mother_controller.target_motherDetails);
 mother_route.get("/mother_posts_list",mother_controller.Mother_Posts_list);
 mother_route.get("/post_comments_list",mother_controller.Post_Comments_List);
+mother_route.get("/delete_comments",mother_controller.delete_comments);
+mother_route.get("/warning_for_comments",mother_controller.warning_for_comments);
+
 
 mother_route.get("/Mother_Post_Details",mother_controller.Mother_Post_Details);
 mother_route.get("/Mother_Post_Reply_Count",mother_controller.Mother_Post_Reply_Count);
+mother_route.get("/Single_Post_Details",mother_controller.Single_Post_Details);
+mother_route.get("/Check_single_mother_Posts_list",mother_controller.ChecksinglemotherPostslist);
+
 
 // for mother pending post list tale
 mother_route.get("/Mother_Pending_Post_With_Count",mother_controller.Mother_Pending_Post_With_Count);
@@ -35,25 +41,54 @@ mother_route.get("/mother_nof_comments",mother_controller.NOF_Comments);
 mother_route.get("/block_mother",mother_controller.Block_Mother);
 mother_route.get("/unblock_mother",mother_controller.Unblock_Mother);
 
+// mother post hide unhide
+mother_route.get("/HidePost",mother_controller.HidePost);
+mother_route.get("/ShowHidePost",mother_controller.ShowHidePost);
+mother_route.get("/acceptPost",mother_controller.acceptPost);
+mother_route.get("/rejectPost",mother_controller.rejectPost);
+
 
 // This routs for Astrologer
+mother_route.get("/RegisterdastrologerCount",astrologer_controller.Registerd_astrologers_Count);
+mother_route.get("/BlockedastrologerCount",astrologer_controller.Blocked_astrologers_Count);
+mother_route.get("/PendingastrologerCount",astrologer_controller.Pending_astrologers_Count);
 mother_route.get("/astrologerlist",astrologer_controller.registered_astrologers);
 mother_route.get("/block_astrologer",astrologer_controller.Block_astrologers);
 mother_route.get("/unblock_astrologer",astrologer_controller.Unblock_astrologers);
+mother_route.get("/Astrologers_Month_Profit",astrologer_controller.Astrologers_Month_Profit);
+mother_route.get("/Astrologers_Data_with_profit",astrologer_controller.Astrologers_Data_with_profit);
+mother_route.get("/accept_astrologer",astrologer_controller.accept_astrologer);
+mother_route.get("/reject_astrologer",astrologer_controller.reject_astrologer);
+
+
 
 mother_route.get("/view_astrologer_requests",astrologer_controller.View_astrologers_requests);
 
 // This routs for paediatrician
+mother_route.get("/RegisterdpaediatricianCount",paediatrician_controller.Registerd_paediatrician_Count);
+mother_route.get("/BlockedpaediatricianCount",paediatrician_controller.Blocked_paediatrician_Count);
+mother_route.get("/PendingpaediatricianCount",paediatrician_controller.Pending_paediatrician_Count);
 mother_route.get("/paediatricianlist",paediatrician_controller.registered_pediatrician);
 mother_route.get("/block_paediatrician",paediatrician_controller.Block_pediatrician);
 mother_route.get("/unblock_paediatrician",paediatrician_controller.Unblock_pediatrician);
 
 mother_route.get("/view_paediatrician_requests",paediatrician_controller.View_pediatricians_requests);
+mother_route.get("/accept_pediatrician",paediatrician_controller.accept_pediatrician);
+mother_route.get("/reject_pediatrician",paediatrician_controller.reject_pediatrician);
+
+
 
 // This routs for baby_name_provider
+mother_route.get("/RegisterdNPCount",baby_name_provider_controller.Registerd_np_Count);
+mother_route.get("/BlockedNPCount",baby_name_provider_controller.Blocked_np_Count);
+mother_route.get("/PendingNPCount",baby_name_provider_controller.Pending_np_Count);
 mother_route.get("/baby_name_providerlist",baby_name_provider_controller.registered_baby_name_provider_controller);
 mother_route.get("/block_baby_name_provider",baby_name_provider_controller.Block_baby_name_provider_controller);
 mother_route.get("/unblock_baby_name_provider",baby_name_provider_controller.Unblock_baby_name_provider_controller);
+mother_route.get("/NP_Month_Profit",baby_name_provider_controller.NP_Month_Profit);
+mother_route.get("/NP_Data_with_profit",baby_name_provider_controller.NP_Data_with_profit);
+mother_route.get("/accept_np",baby_name_provider_controller.accept_np);
+mother_route.get("/reject_np",baby_name_provider_controller.reject_np);
 
 mother_route.get("/view_baby_name_provider_requests",baby_name_provider_controller.View_baby_name_provider_requests);
 
