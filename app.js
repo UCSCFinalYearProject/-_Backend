@@ -34,7 +34,7 @@ app.use(express.json());
 // if request come from "localhost:3000/student", then it gose to student_route
 app.use("/login" , register_route);
 
-// if request come from "localhost:3000/admin", then it goes to student_route
+// if request come from "localhost:3000/admin", then it goes to admin_route
 app.use("/admin" , admin_route);
 
 // if request come from "localhost:3000/todos", then it goes to student_todos_route

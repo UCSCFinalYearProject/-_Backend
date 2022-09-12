@@ -89,10 +89,10 @@ mother_route.get("/np/NP_profit_distribution",Np_Report.NP_profit_distribution);
 //al report
 mother_route.get("/al/report_stat_card1",report_stat_card1_controller.stat_card);
 mother_route.get("/al/report_stat_card2",report_stat_card2_controller.stat_card);
-mother_route.get("/al/al_tot_income",astrologer_controller.Al_tot_income);
-mother_route.get("/al/al_pending_tot_income",astrologer_controller.Al_pending_tot_income);
-mother_route.get("/al/reg_al",astrologer_controller.Registered_al);
-mother_route.get("/al/profit_al",astrologer_controller.Profit_al);
+mother_route.post("/al/al_tot_income",astrologer_controller.Al_tot_income);
+mother_route.post("/al/al_pending_tot_income",astrologer_controller.Al_pending_tot_income);
+mother_route.post("/al/reg_al",astrologer_controller.Registered_al);
+mother_route.post("/al/profit_al",astrologer_controller.Profit_al);
 
 
 mother_route.get("/ad/dashboard_as_count",ad_dashboard_controller.registered_astrologers_count);
