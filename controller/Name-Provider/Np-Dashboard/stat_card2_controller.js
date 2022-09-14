@@ -1,7 +1,7 @@
 const { isEmpty } = require('../../../utils/is_empty');
 const conn = require('../../../service/db_service');
-const {STAT_card1,STAT_card2} = require('../../../query/Astrologer/al_dash_board');
-const { PROFILE_CARD_MODEL } = require('../../../model/Astrologer/Al-Dashboard/stat_card_model');
+const {STAT_card1,STAT_card2} = require('../../../query/Name-Provider/np_dash_board');
+const { PROFILE_CARD_MODEL } = require('../../../model/Name-Provider/Np-Dashboard/stat_card_model');
 const bcrypt = require('bcryptjs');
 const AppError = require('../../../utils/appError');
 const JWT = require('jsonwebtoken');

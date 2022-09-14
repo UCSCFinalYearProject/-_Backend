@@ -21,8 +21,8 @@ exports.request_table = (req, res, next) => {
             }
             else{
                 res.status(200).json({
-                    students:data,
-                    data:"success"
+                    req:data,
+                    //data:"success"
                 })
             }
 
