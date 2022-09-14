@@ -194,8 +194,8 @@ exports.Registered_np = (req, res, next) => {
             }
             else{
                 res.status(200).json({
-                    reg_al:data,
-                    message:"success"
+                    reg_np:data,
+                   // message:"success"
                 })
             }
         })
@@ -213,8 +213,8 @@ exports.Profit_np = (req, res, next) => {
             }
             else{
                 res.status(200).json({
-                    reg_al:data,
-                    message:"success"
+                    profit_np:data,
+                    //message:"success"
                 })
             }
         })
