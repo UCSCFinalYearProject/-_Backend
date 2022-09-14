@@ -6,7 +6,9 @@ const {
     VIEW_articles_comments,
     VIEW_followers,
     Trending_article,
-    no_of_articles
+    no_of_articles,
+    no_of_article_comments,
+    today_comments
 } = require('../../query/Pediatrician/view_article');
 const { PEDIATRICIAN_MODEL } = require('../../model/Pediatrician/view_article');
 const bcrypt = require('bcryptjs');
@@ -39,8 +41,11 @@ exports.VIEW_single_articles = (req, res, next) => {
     //   const x= req.getParameters(doctor_id)
     // const y= req.query['doctor_id'];
     // console.log(req.params.article_id)
+    console.log(req.query.article_id)
+    console.log(req.query.doctor_id)
+    console.log("set")
     try {
-        conn.query(VIEW_single_articles,[req.body.article_id],(err,data,feild)=>{
+        conn.query(VIEW_single_articles,[req.query.article_id,req.query.doctor_id],(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -56,12 +61,14 @@ exports.VIEW_single_articles = (req, res, next) => {
 
     }
 }
+
 exports.VIEW_article_commits = (req, res, next) => {
     //   const x= req.getParameters(doctor_id)
     // const y= req.query['doctor_id'];
-    console.log(req.params.article_id)
+    console.log("id")
+    console.log(req.query.article_id)
     try {
-        conn.query(VIEW_articles_comments,[req.body.article_id],(err,data,feild)=>{
+        conn.query(VIEW_articles_comments,[req.query.article_id],(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -80,10 +87,10 @@ exports.VIEW_article_commits = (req, res, next) => {
 
 exports.VIEW_followers = (req, res, next) => {
     //   const x= req.getParameters(doctor_id)
-    // const y= req.query['doctor_id'];
-    // console.log(req.params.article_id)
+    const y= req.query['doctor_id'];
+    console.log(req.query.doctor_id)
     try {
-        conn.query(VIEW_followers,[req.body.doctor_id],(err,data,feild)=>{
+        conn.query(VIEW_followers,y,(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -112,7 +119,7 @@ exports.Trending_article = (req, res, next) => {
             }
             else{
                 res.status(200).json({
-                    followers:data
+                    article:data
                 })
             }
 
@@ -131,7 +138,49 @@ exports.no_of_articles = (req, res, next) => {
             }
             else{
                 res.status(200).json({
-                    followers:data
+                    count:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
+exports.no_of_article_comments = (req, res, next) => {
+    const y= req.query['article_id'];
+    try {
+        conn.query(no_of_article_comments,y,(err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    count:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
+
+exports.today_article_comments = (req, res, next) => {
+    const y= req.query['today'];
+    console.log(y)
+    try {
+        conn.query(today_comments,y,(err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    comment:data
                 })
             }
 
