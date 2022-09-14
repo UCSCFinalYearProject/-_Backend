@@ -9,6 +9,8 @@ const profit_chart_controller = require('../../controller/Astrologer/Al-Dashboar
 
 
 al_route.get("/new_request/:receiver_id",al_request_table_controller.request_table);
+
+al_route.get("/db/today_request/:receiver_id",al_request_table_controller.today_request_table);
 al_route.get("/db/profile_card/:user_id",profile_card_controller.profile_card);
 al_route.get("/db/stat_card1/:receiver_id",stat_card1_controller.stat_card);
 al_route.get("/db/stat_card2/:receiver_id",stat_card2_controller.stat_card);
