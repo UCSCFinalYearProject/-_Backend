@@ -13,3 +13,4 @@ exports.PROFIT_chart="select month(date_time), sum(amount) " +
     "from baby_name_provider_payment a,baby_name_provider_request b " +
     "WHERE year(date_time) = '2022' AND b.receiver_id=? " +
     "AND a.request_id=b.request_id group by month(date_time)";
+exports.TODAY_req="SELECT * FROM parent a ,baby_name_provider_request b WHERE a.user_id =b.requester_id AND b.receiver_id=? AND date(b.request_date) = CURRENT_DATE";

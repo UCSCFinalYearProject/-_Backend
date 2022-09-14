@@ -20,8 +20,8 @@ exports.profit_chart = (req, res, next) => {
             }
             else{
                 res.status(200).json({
-                    students:data,
-                    data:"success"
+                    profit_data:data,
+                   // data:"success"
                 })
             }
 
