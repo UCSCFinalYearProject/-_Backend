@@ -138,10 +138,10 @@ mother_route.get("/ad/dashboard_np_count",ad_dashboard_controller.registered_np_
 //np report
 mother_route.get("/np/report_stat_card1",np_report_stat_card1_controller.stat_card);
 mother_route.get("/np/report_stat_card2",np_report_stat_card2_controller.stat_card);
-mother_route.get("/np/np_tot_income",baby_name_provider_controller.Np_tot_income);
-mother_route.get("/np/np_pending_tot_income",baby_name_provider_controller.Np_pending_tot_income);
-mother_route.get("/np/reg_np",baby_name_provider_controller.Registered_np);
-mother_route.get("/np/profit_np",baby_name_provider_controller.Profit_np);
+mother_route.post("/np/np_tot_income",baby_name_provider_controller.Np_tot_income);
+mother_route.post("/np/np_pending_tot_income",baby_name_provider_controller.Np_pending_tot_income);
+mother_route.post("/np/reg_np",baby_name_provider_controller.Registered_np);
+mother_route.post("/np/profit_np",baby_name_provider_controller.Profit_np);
 
 
 
