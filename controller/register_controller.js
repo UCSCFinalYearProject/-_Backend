@@ -64,7 +64,7 @@ exports.user_register = (req, res, next) => {
 
                 const salt = await bcrypt.genSalt(10);
                 const hashedValue = await bcrypt.hash(req.body.password, salt);
-                conn.query(REGISTER_User_al, [[req.body.name, hashedValue, req.body.email,req.body.service_charge]],async (err, data, feilds) => {
+                console.log( conn.query(REGISTER_User_al, [[req.body.name, hashedValue, req.body.email,req.body.service_charge]],async (err, data, feilds) => {
 
                     if (err) return next(new AppError(err, 500));
                     //insert data into common user table
@@ -78,7 +78,7 @@ exports.user_register = (req, res, next) => {
                     })
 
 
-                })
+                }))
 
 
             })

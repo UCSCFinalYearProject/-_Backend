@@ -20,8 +20,8 @@ exports.profile_card = (req, res, next) => {
             }
             else{
                 res.status(200).json({
-                    students:data,
-                    data:"success"
+                    user:data,
+                    //data:"success"
                 })
             }
 

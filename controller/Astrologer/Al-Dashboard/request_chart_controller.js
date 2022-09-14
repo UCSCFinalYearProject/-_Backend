@@ -20,8 +20,8 @@ exports.request_chart = (req, res, next) => {
             }
             else{
                 res.status(200).json({
-                    students:data,
-                    data:"success"
+                    req_data:data,
+                   // data:"success"
                 })
             }
 
