@@ -1,5 +1,6 @@
 // require express library
 const express = require('express');
+const bodyParser = require('body-parser');
 
 // require route
 
@@ -10,6 +11,7 @@ const al_route = require('./route/Astrologer/al_routs');
 const np_route = require('./route/Name-Provider/np_routs');
 const pt_route = require('./route/Pediatrician/pt_routs');
 
+
 // require JWT auth Service
 const auth = require('./service/auth_service');
 
@@ -18,7 +20,9 @@ const errorHandler = require('./utils/errorHandler');
 
 // create instance of an express, then assign to app variable
 const app = express();
-
+app.use(express.static("./public"))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 // require cors package
 const cors = require('cors');
 const register_route = require("./route/register_route");
