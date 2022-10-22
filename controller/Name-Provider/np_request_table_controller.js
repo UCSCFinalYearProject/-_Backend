@@ -46,7 +46,7 @@ exports.today_request_table = (req, res, next) => {
             }
             else{
                 res.status(200).json({
-                    today_req:data,
+                    req:data,
                     // data:"success"
                 })
             }
