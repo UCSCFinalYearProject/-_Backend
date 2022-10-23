@@ -1,6 +1,6 @@
 const { isEmpty } = require('../../utils/is_empty');
 const conn = require('../../service/db_service');
-const {REQUEST_table, REQUEST_table_row} = require('../../query/Astrologer/al_request_table');
+const {REQUEST_table, REQUEST_table_row, REQUEST_table_row_res} = require('../../query/Astrologer/al_request_table');
 const { REQUEST_TABLE_MODEL } = require('../../model/Astrologer/al_request_table_model');
 const bcrypt = require('bcryptjs');
 const AppError = require('../../utils/appError');
@@ -84,5 +84,28 @@ exports.request_table_row = (req, res, next) => {
 
 }
 
+//response message related to request data
+exports.request_table_row_res = (req, res, next) => {
+
+    try {
+
+        conn.query(REQUEST_table_row_res,[req.params.request_id], (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    req:data,
+                    //data:"success"
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+
+}
 
 

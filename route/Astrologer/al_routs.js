@@ -10,13 +10,18 @@ const profit_chart_controller = require('../../controller/Astrologer/Al-Dashboar
 
 al_route.get("/new_request/:receiver_id",al_request_table_controller.request_table);
 al_route.get("/db/request_table_row/:receiver_id",al_request_table_controller.request_table_row);
+al_route.get("/db/request_table_row_res/:request_id",al_request_table_controller.request_table_row_res);
+
 al_route.get("/db/today_request/:receiver_id",al_request_table_controller.today_request_table);
 al_route.get("/db/profile_card/:user_id",profile_card_controller.profile_card);
 al_route.get("/db/stat_card1/:receiver_id",stat_card1_controller.stat_card);
 al_route.get("/db/stat_card2/:receiver_id",stat_card2_controller.stat_card);
 al_route.get("/db/req_chart/:receiver_id",request_chart_controller.request_chart);
-
 al_route.get("/db/profit_chart/:receiver_id",profit_chart_controller.profit_chart);
+
+
+
+
 //http://localhost:3000/al/db/profit_chart/1
 
 module.exports = al_route;
