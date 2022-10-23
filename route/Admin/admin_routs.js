@@ -69,13 +69,15 @@ mother_route.get("/RegisterdpaediatricianCount",paediatrician_controller.Registe
 mother_route.get("/BlockedpaediatricianCount",paediatrician_controller.Blocked_paediatrician_Count);
 mother_route.get("/PendingpaediatricianCount",paediatrician_controller.Pending_paediatrician_Count);
 mother_route.get("/paediatricianlist",paediatrician_controller.registered_pediatrician);
+mother_route.get("/paediatricianlist_without_pending",paediatrician_controller.registered_pediatrician_without_pending);
+
 mother_route.get("/block_paediatrician",paediatrician_controller.Block_pediatrician);
 mother_route.get("/unblock_paediatrician",paediatrician_controller.Unblock_pediatrician);
 
 mother_route.get("/view_paediatrician_requests",paediatrician_controller.View_pediatricians_requests);
+mother_route.get("/View_Target_Pediatrician",paediatrician_controller.View_Target_Pediatrician);
 mother_route.get("/accept_pediatrician",paediatrician_controller.accept_pediatrician);
 mother_route.get("/reject_pediatrician",paediatrician_controller.reject_pediatrician);
-
 
 
 // This routs for baby_name_provider
