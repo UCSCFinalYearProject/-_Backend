@@ -13,10 +13,11 @@ exports.Astrologers_Data_with_profit = " SELECT a.user_id,a.name,a.STATUS,a.prof
 
 exports.accept_astrologer = " UPDATE `astrologer` SET `STATUS` = '0' WHERE `astrologer`.`user_id` = ?" ;
 exports.reject_astrologer = " DELETE FROM astrologer WHERE `astrologer`.`user_id` = ?" ;
-
+exports.View_Target_astrologer = " SELECT * FROM `astrologer` where `astrologer`.`user_id` = ? " ;
 exports.REGISTERED_Astrologers_count = " SELECT COUNT(user_id) FROM `astrologer`" ;
 exports.REGISTERED_pediatrician_count = " SELECT COUNT(user_id) FROM `paediatrician`" ;
 exports.REGISTERED_mothers_count = " SELECT COUNT(user_id) FROM `parent`" ;
 exports.REGISTERED_np_count = " SELECT COUNT(user_id) FROM `baby_name_provider`" ;
+exports.View_Target_np = " SELECT * FROM `baby_name_provider` where `baby_name_provider`.`user_id` = ? " ;
 
 

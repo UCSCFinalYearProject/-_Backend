@@ -59,6 +59,7 @@ mother_route.get("/Astrologers_Month_Profit",astrologer_controller.Astrologers_M
 mother_route.get("/Astrologers_Data_with_profit",astrologer_controller.Astrologers_Data_with_profit);
 mother_route.get("/accept_astrologer",astrologer_controller.accept_astrologer);
 mother_route.get("/reject_astrologer",astrologer_controller.reject_astrologer);
+mother_route.get("/View_Target_astrologer",astrologer_controller.View_Target_astrologer);
 
 
 
@@ -91,6 +92,8 @@ mother_route.get("/NP_Month_Profit",baby_name_provider_controller.NP_Month_Profi
 mother_route.get("/NP_Data_with_profit",baby_name_provider_controller.NP_Data_with_profit);
 mother_route.get("/accept_np",baby_name_provider_controller.accept_np);
 mother_route.get("/reject_np",baby_name_provider_controller.reject_np);
+mother_route.get("/View_Target_np",baby_name_provider_controller.View_Target_np);
+
 
 mother_route.get("/view_baby_name_provider_requests",baby_name_provider_controller.View_baby_name_provider_requests);
 
