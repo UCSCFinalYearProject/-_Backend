@@ -9,7 +9,10 @@ const profit_chart_controller = require('../../controller/Name-Provider/Np-Dashb
 
 
 np_route.get("/db/today_request/:receiver_id",np_request_table_controller.today_request_table);
-np_route.get("/db/request_table_row/:receiver_id",np_request_table_controller.request_table_row );
+
+np_route.get("/db/request_table_row/:receiver_id",np_request_table_controller.request_table_row);
+np_route.get("/db/request_table_row_res/:request_id",np_request_table_controller.request_table_row_res);
+
 np_route.get("/new_request/:receiver_id",np_request_table_controller.request_table);
 np_route.get("/db/profile_card/:user_id",profile_card_controller.profile_card);
 np_route.get("/db/stat_card1/:receiver_id",stat_card1_controller.stat_card);

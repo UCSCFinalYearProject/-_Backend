@@ -7,6 +7,7 @@ const AppError = require('../../utils/appError');
 const JWT = require('jsonwebtoken');
 const {TODAY_req} = require("../../query/Name-Provider/np_dash_board");
 const {REQUEST_table_row} = require("../../query/Name-Provider/np_request_table");
+const {REQUEST_table_row_res} = require("../../query/Name-Provider/np_request_table");
 
 
 exports.request_table = (req, res, next) => {
@@ -83,4 +84,29 @@ exports.request_table_row = (req, res, next) => {
     }
 
 }
+
+//response message related to request data
+exports.request_table_row_res = (req, res, next) => {
+
+    try {
+
+       console.log( conn.query(REQUEST_table_row_res,[req.params.request_id], (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    req:data,
+                    //data:"success"
+                })
+            }
+
+        }))
+    } catch ( err ) {
+
+    }
+
+}
+
 
