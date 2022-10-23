@@ -11,7 +11,7 @@ const {REQUEST_table_row_res} = require("../../query/Name-Provider/np_request_ta
 
 
 exports.request_table = (req, res, next) => {
-    // if (isEmpty(req.body)) return next( new AppError("form data not found" , 400));
+
     try {
         // const { error } = MOTHER_MODEL.validate(req.body);
         // if (error) return next( new AppError( error.details[0].message , 400));

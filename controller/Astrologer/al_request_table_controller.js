@@ -1,11 +1,12 @@
 const { isEmpty } = require('../../utils/is_empty');
 const conn = require('../../service/db_service');
-const {REQUEST_table, REQUEST_table_row, REQUEST_table_row_res} = require('../../query/Astrologer/al_request_table');
+const {REQUEST_table, REQUEST_table_row, REQUEST_table_row_res, RESPONSE_table, SET_status} = require('../../query/Astrologer/al_request_table');
 const { REQUEST_TABLE_MODEL } = require('../../model/Astrologer/al_request_table_model');
 const bcrypt = require('bcryptjs');
 const AppError = require('../../utils/appError');
 const JWT = require('jsonwebtoken');
 const {TODAY_req} = require("../../query/Astrologer/al_dash_board");
+const {COMMON_user} = require("../../query/register");
 
 
 exports.request_table = (req, res, next) => {
@@ -102,6 +103,35 @@ exports.request_table_row_res = (req, res, next) => {
             }
 
         })
+    } catch ( err ) {
+
+    }
+
+}
+//insert data to response
+exports.insert_response = (req, res, next) => {
+
+    try {
+
+       console.log( conn.query(RESPONSE_table,[[req.params.request_id,req.params.msg,req.params.letters]], (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                conn.query(SET_status, [req.params.request_id],async (err, data, feilds) => {
+
+                    if (err) return next(new AppError(err, 500));
+
+                })
+                res.status(200).json({
+                   // req:data,
+                    data:"success"
+                })
+
+            }
+
+        }))
     } catch ( err ) {
 
     }
