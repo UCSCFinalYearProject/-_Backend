@@ -11,6 +11,9 @@ exports.no_of_followers = "SELECT COUNT(follower_id) FROM `article`  WHERE docto
 exports.block_article_comments = "UPDATE article_comments SET status='1' WHERE `article_comments`.`comment_id` = ?;";
 exports.unblock_article_comments = "UPDATE article_comments SET status='0' WHERE `article_comments`.`comment_id` = ?;";
 exports.article_categories = "SELECT * FROM `article_categories`;";
+exports.insert_article = "INSERT INTO `article` (title,category,des,doctor_id) VALUES (?,?,?,?);";
+
+
 
 
 

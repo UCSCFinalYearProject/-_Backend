@@ -16,7 +16,8 @@ const {
     unblock_article_comments,
     today_comments,
     article_categories,
-    VIEW_all_articles
+    VIEW_all_articles,
+    insert_article
 } = require('../../query/Pediatrician/view_article');
 const { PEDIATRICIAN_MODEL } = require('../../model/Pediatrician/view_article');
 const bcrypt = require('bcryptjs');
@@ -260,10 +261,31 @@ exports.today_article_comments = (req, res, next) => {
 }
 
 exports.article_categories = (req, res, next) => {
-    const y= req.query['today'];
+    // const y= req.query['today'];
     // console.log(y)
     try {
-        conn.query(today_comments,y,(err,data,feild)=>{
+        conn.query(article_categories,(err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    catogery:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.Insert_Pediatrician_Articles = (req, res, next) => {
+    //const y= req.query['today'];
+    console.log("article")
+    console.log(req.body)
+    try {
+        conn.query(insert_article,[req.body.params.article[0],req.body.params.article[1],req.body.params.article[2],req.body.params.article[3]],(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
