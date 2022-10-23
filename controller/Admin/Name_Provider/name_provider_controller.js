@@ -15,7 +15,7 @@ const bcrypt = require('bcryptjs');
 const AppError = require('../../../utils/appError');
 const JWT = require('jsonwebtoken');
 const {TOT_income, PENDING_tot_income, REGISTERED_np, PROFIT_np} = require("../../../query/Admin/Name-Provider/np_report");
-const {Astrologers_Data_with_profit, Astrologers_Month_Profit} = require("../../../query/Admin/Astrologer/admin_astrologer");
+const {Astrologers_Data_with_profit, Astrologers_Month_Profit, View_Target_astrologer, View_Target_np} = require("../../../query/Admin/Astrologer/admin_astrologer");
 
 exports.registered_baby_name_provider_controller = (req, res, next) => {
     try {
@@ -290,6 +290,24 @@ exports.reject_np = (req, res, next) => {
                 })
             }
         })
+    } catch ( err ) {
+
+    }
+}
+exports.View_Target_np = (req, res, next) => {
+    try {
+        console.log(conn.query(View_Target_np,[req.query.uid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    np:data
+                })
+            }
+
+        }))
     } catch ( err ) {
 
     }

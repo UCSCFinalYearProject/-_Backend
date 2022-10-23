@@ -2,7 +2,7 @@ const { isEmpty } = require('../../../utils/is_empty');
 const conn = require('../../../service/db_service');
 const {REGISTERED_Pediatrician,Block_Pediatrician,Unblock_Pediatrician, Registerd_paediatrician_Count,
     Blocked_paediatrician_Count, Pending_paediatrician_Count, View_Pediatrician_Requests, reject_pediatrician,
-    accept_pediatrician
+    accept_pediatrician, View_Target_Pediatrician, REGISTERED_Pediatrician_without_pending
 } = require('../../../query/Admin/Pediatrician/admin_pediatrician');
 const { MOTHER_MODEL} = require('../../../model/Mother/mother_model');
 const bcrypt = require('bcryptjs');
@@ -12,6 +12,23 @@ const JWT = require('jsonwebtoken');
 exports.registered_pediatrician = (req, res, next) => {
     try {
         conn.query(REGISTERED_Pediatrician, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.registered_pediatrician_without_pending = (req, res, next) => {
+    try {
+        conn.query(REGISTERED_Pediatrician_without_pending, (err,data,feild)=>{
             if(err){
                 return next(new AppError(err))
             }
@@ -39,6 +56,25 @@ exports.Registerd_paediatrician_Count = (req, res, next) => {
             }
 
         })
+    } catch ( err ) {
+
+    }
+}
+// block mother
+exports.View_Target_Pediatrician = (req, res, next) => {
+    try {
+        console.log(conn.query(View_Target_Pediatrician,[req.query.uid],  (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    pediatricians:data
+                })
+            }
+
+        }))
     } catch ( err ) {
 
     }
