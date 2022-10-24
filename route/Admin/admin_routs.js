@@ -152,6 +152,7 @@ mother_route.post("/np/profit_np",baby_name_provider_controller.Profit_np);
 //pediatrician listssd
 mother_route.get("/pediatricianList",mother_controller.registered_pediatrician);
 mother_route.get("/pediatricianListtest",mother_controller.registered_pediatrician);
+mother_route.get("/pediatricianListtestv2",mother_controller.registered_pediatrician);
 
 
 module.exports = mother_route;
