@@ -128,26 +128,32 @@ exports.user_register = (req, res, next) => {
 }
 
 exports.user_login = (req, res, next) => {
-    console.log(req)
+    // console.log(req)
     const email=req.query.email
     const password=req.query.password
     const data1={
         "email":email,
         "password":password
     }
-    console.log(data1)
+    // console.log(data1)
     if (isEmpty(data1)) return next( new AppError("form data not found" , 400));
     try {
         const { error } = STUDENT_LOGIN_MODEL.validate(data1);
         if (error) return next( new AppError( error.details[0].message , 400));
         conn.query(CHECK_EMAIL, [data1.email], async (err, data, feilds) => {
-            // if (err) return next( new AppError( err , 500));
-            // if ( !data.length ) return next( new AppError( "Email or Password Invalid" , 401));
-            console.log(data[0].type)
-            const type=data[0].type
+            const password=data[0].password
+            // console.log("ps from db")
+            const isMatched = await bcrypt.compare(data1.password,password);
+            // console.log("is matching...")
+            // console.log(isMatched)
+
+            if( !isMatched ) { next( new AppError( "Email or Password Invalid" , 401))}else {
+                const type=data[0].type
+                // console.log(data[0])
+
             if(type=='NP'){
                 conn.query(CHECK_NP,[data[0].email],async (err,data,feilds) => {
-                    console.log(data)
+                    // console.log(data)
                     res.status(200).json({
                         data: data,
                     })
@@ -155,9 +161,17 @@ exports.user_login = (req, res, next) => {
             }
             else if(type=='PT'){
                 conn.query(CHECK_PT,[data[0].email],async (err,data,feilds) => {
-                    console.log(data)
-                    res.status(200).json({
+                    const token = JWT.sign( { name: data[0].name, s_id: data[0].user_id } , "ucscucscucsc" , { expiresIn: "1d"} );
+
+                    // console.log("this is pt data")
+                    // console.log(data[0].name)
+                    // res.status(200).json({
+                    //     data: data,
+                    //     token:token
+                    // })
+                    res.header("auth-token", token).status(200).json({
                         data: data,
+                        token: token
                     })
                 })
             }
@@ -182,7 +196,7 @@ exports.user_login = (req, res, next) => {
             //
             // const token = JWT.sign( { name: data[0].name, s_id: data[0].user_id } , "ucscucscucsc" , { expiresIn: "1d"} );
             //
-        })
+        }})
     } catch ( err ) {
 
     }
