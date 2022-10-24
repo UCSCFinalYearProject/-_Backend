@@ -4,3 +4,6 @@ exports.REGISTER_MOTHER = "INSERT INTO `parent` (`user_id`, `first_name`, `last_
 
 //yasas
 exports.REGISTERED_Pediatrician_article_list = " SELECT * FROM `article` " ;
+
+//yasas2
+exports.REGISTERED_Pediatrician_list = " SELECT * FROM `paediatrician` " ;

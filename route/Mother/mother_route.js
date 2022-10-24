@@ -12,5 +12,6 @@ mother_register_route.post("/",mother_register.mother_register);
 //yasas
 mother_register_route.get("/pediatricianarticanls",mother_controller.Pediatrician_article);
 
+mother_register_route.get("/pediatricianList",mother_controller.registered_pediatrician);
 
 module.exports = mother_register_route;

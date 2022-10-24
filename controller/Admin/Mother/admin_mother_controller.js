@@ -390,10 +390,28 @@ exports.registered_pediatrician = (req, res, next) => {
 
     }
 }
-
+//yasas
 exports.Pediatrician_article = (req, res, next) => {
     try {
         conn.query(REGISTERED_Pediatrician_article_list, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
+exports.registered_pediatrician = (req, res, next) => {
+    try {
+        conn.query(REGISTERED_Pediatrician_list, (err,data,feild)=>{
             if(err){
                 return next(new AppError(err))
             }
