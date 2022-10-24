@@ -148,6 +148,9 @@ mother_route.post("/np/np_pending_tot_income",baby_name_provider_controller.Np_p
 mother_route.post("/np/reg_np",baby_name_provider_controller.Registered_np);
 mother_route.post("/np/profit_np",baby_name_provider_controller.Profit_np);
 
+//mother mobile part
+//pediatrician listssd
+mother_route.get("/pediatricianList",mother_controller.registered_pediatrician);
 
 
 module.exports = mother_route;
