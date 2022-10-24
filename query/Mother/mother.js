@@ -14,3 +14,6 @@ exports.Top_5_articanls = " SELECT * FROM `article` ORDER BY date DESC LIMIT 3; 
 
 //yasas4
 exports.mother_post = " SELECT * FROM `post`";
+
+//Yasas5
+exports.Mother_Article_category_list = " SELECT * FROM `article_categories` ";

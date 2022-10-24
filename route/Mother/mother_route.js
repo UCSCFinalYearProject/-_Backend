@@ -22,5 +22,8 @@ mother_register_route.get("/Top_5_articanls",mother_controller.Top_5_articanls);
 //Yasas
 mother_register_route.get("/mother_post",mother_controller.mother_post);
 
+//Yasas
+mother_register_route.get("/Mother_Article_category_list",mother_controller.Mother_Article_category_list);
+
 
 module.exports = mother_register_route;
