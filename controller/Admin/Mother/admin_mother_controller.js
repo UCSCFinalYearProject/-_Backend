@@ -19,7 +19,7 @@ const bcrypt = require('bcryptjs');
 const AppError = require('../../../utils/appError');
 const JWT = require('jsonwebtoken');
 const {REGISTERED_baby_name_provider_controller} = require("../../../query/Admin/Name-Provider/admin_name_provider");
-const {REGISTERED_Pediatrician, REGISTERED_Pediatrician_list} = require("../../../query/Admin/Pediatrician/admin_pediatrician");
+const {REGISTERED_Pediatrician, REGISTERED_Pediatrician_list, REGISTERED_Pediatrician_article_list} = require("../../../query/Admin/Pediatrician/admin_pediatrician");
 
 exports.registered_mothers = (req, res, next) => {
     try {
@@ -372,9 +372,27 @@ exports.Mother_Pending_Post_With_Count = (req, res, next) => {
     }
 }
 //mobile back end
+// yasas
 exports.registered_pediatrician = (req, res, next) => {
     try {
         conn.query(REGISTERED_Pediatrician_list, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.Pediatrician_article = (req, res, next) => {
+    try {
+        conn.query(REGISTERED_Pediatrician_article_list, (err,data,feild)=>{
             if(err){
                 return next(new AppError(err))
             }
