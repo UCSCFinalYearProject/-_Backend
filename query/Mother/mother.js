@@ -11,3 +11,6 @@ exports.REGISTERED_Pediatrician_list = " SELECT * FROM `paediatrician` " ;
 
 //yasas3
 exports.Top_5_articanls = " SELECT * FROM `article` ORDER BY date DESC LIMIT 3; " ;
+
+//yasas4
+exports.mother_post = " SELECT * FROM `post`";

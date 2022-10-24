@@ -19,7 +19,8 @@ mother_register_route.get("/pediatricianList",mother_controller.registered_pedia
 //yasas
 mother_register_route.get("/Top_5_articanls",mother_controller.Top_5_articanls);
 
-
+//Yasas
+mother_register_route.get("/mother_post",mother_controller.mother_post);
 
 
 module.exports = mother_register_route;

@@ -20,7 +20,7 @@ const AppError = require('../../../utils/appError');
 const JWT = require('jsonwebtoken');
 const {REGISTERED_baby_name_provider_controller} = require("../../../query/Admin/Name-Provider/admin_name_provider");
 const {REGISTERED_Pediatrician, REGISTERED_Pediatrician_list} = require("../../../query/Admin/Pediatrician/admin_pediatrician");
-const {REGISTERED_Pediatrician_article_list, Top_5_articanls} = require("../../../query/Mother/mother");
+const {REGISTERED_Pediatrician_article_list, Top_5_articanls, mother_post} = require("../../../query/Mother/mother");
 
 exports.registered_mothers = (req, res, next) => {
     try {
@@ -436,6 +436,27 @@ exports.registered_pediatrician = (req, res, next) => {
 exports.Top_5_articanls = (req, res, next) => {
     try {
         conn.query(Top_5_articanls, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
+
+//Yasas
+
+exports.mother_post = (req, res, next) => {
+    try {
+        conn.query(mother_post, (err,data,feild)=>{
             if(err){
                 return next(new AppError(err))
             }
