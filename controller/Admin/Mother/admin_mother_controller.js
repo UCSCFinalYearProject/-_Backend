@@ -533,3 +533,11 @@ exports.Mother_data = (req, res, next) => {
 
     }
 }
+
+//Yasas
+
+exports.read_data = (req, res, next) => {
+    const content = readFileSync("myFile.txt");
+    console.log("content ",content )
+    return JSON.stringify(content);
+}

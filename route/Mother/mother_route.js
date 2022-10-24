@@ -31,7 +31,8 @@ mother_register_route.get("/Mothers_Artical_list",mother_controller.Mothers_Arti
 //Yasas
 mother_register_route.get("/Mother_data",mother_controller.Mother_data);
 
-
+//Yasas
+mother_register_route.get("/read_file",mother_controller.read_data);
 
 
 
