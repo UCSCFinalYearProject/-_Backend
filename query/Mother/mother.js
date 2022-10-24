@@ -17,3 +17,6 @@ exports.mother_post = " SELECT * FROM `post`";
 
 //Yasas5
 exports.Mother_Article_category_list = " SELECT * FROM `article_categories` ";
+
+//Yasas6
+exports.Mothers_Artical_list = " SELECT * FROM `post` ";
