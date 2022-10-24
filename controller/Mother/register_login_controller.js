@@ -64,78 +64,39 @@ exports.mother_register = (req, res, next) => {
 
 exports.mother_login = (req, res, next) => {
     // console.log(req)
-    const email = req.query.email
-    const password = req.query.password
-    const data1 = {
-        "email": email,
-        "password": password
+    
+    const dataFromRequest = {
+        "mobile": req.body.mobile,
+        "password": req.body.password
     }
     
     // console.log(data1)
-    if (isEmpty(data1)) return next(new AppError("form data not found", 400));
+    if (isEmpty(dataFromRequest)) return next(new AppError("form data not found", 400));
     try {
-        const { error } = STUDENT_LOGIN_MODEL.validate(data1);
+        const { error } = PARENT_MODEL.validate(dataFromRequest);
         if (error) return next(new AppError(error.details[0].message, 400));
-        conn.query(CHECK_EMAIL, [data1.email], async (err, data, feilds) => {
+        conn.query(CHECK_MOBILE, [dataFromRequest.mobile], async (err, data, feilds) => {
+            
             const password = data[0].password
-            // console.log("ps from db")
-            const isMatched = await bcrypt.compare(data1.password, password);
-            // console.log("is matching...")
-            // console.log(isMatched)
+            console.log("ps from db " + password )
+            console.log(dataFromRequest.password)
+            const isMatched = await bcrypt.compare(dataFromRequest.password, password);
+            console.log("is matching...")   
+            console.log(isMatched)
 
-            if (!isMatched) { next(new AppError("Email or Password Invalid", 401)) } else {
-                const type = data[0].type
-                // console.log(data[0])
+            if (!isMatched) { next(new AppError("Mobile or Password Invalid", 401)) } else {
+                // const token = JWT.sign( data , "ucscucscucsc" , { expiresIn: "1d"} );
 
-                if (type == 'NP') {
-                    conn.query(CHECK_EMAIL, [data[0].email], async (err, data, feilds) => {
-                        // console.log(data)
-                        res.status(200).json({
-                            data: data,
-                        })
-                    })
-                }
-                else if (type == 'PT') {
-                    conn.query(CHECK_EMAIL, [data[0].email], async (err, data, feilds) => {
-                        const token = JWT.sign({ name: data[0].name, s_id: data[0].user_id }, "ucscucscucsc", { expiresIn: "1d" });
-
-                        // console.log("this is pt data")
-                        // console.log(data[0].name)
-                        // res.status(200).json({
-                        //     data: data,
-                        //     token:token
-                        // })
-                        res.header("auth-token", token).status(200).json({
-                            data: data,
-                            token: token
-                        })
-                    })
-                }
-                else if (type == 'AL') {
-                    conn.query(CHECK_EMAIL, [data[0].email], async (err, data, feilds) => {
-                        console.log(data)
-                        res.status(200).json({
-                            data: data,
-                        })
-                    })
-                }
-                else if (type == 'ADMIN') {
-                    conn.query(CHECK_EMAIL, [data[0].email], async (err, data, feilds) => {
-                        console.log(data)
-                        res.status(200).json({
-                            data: data,
-                        })
-                    })
-                }
-                // const isMatched = await bcrypt.compare(data1.password , data[0].password);
-                // if( isMatched ) return next( new AppError( "Email or Password Invalid" , 401));
-                //
-                // const token = JWT.sign( { name: data[0].name, s_id: data[0].user_id } , "ucscucscucsc" , { expiresIn: "1d"} );
-                //
+                // console.log(data[0]) 
+                res.status(200).json({
+                    data: data,
+                })
             }
         })
     } catch (err) {
-
+        res.status(500).json({
+            error: err
+        })
     }
 }
 
