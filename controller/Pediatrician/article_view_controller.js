@@ -285,7 +285,7 @@ exports.Insert_Pediatrician_Articles = (req, res, next) => {
     console.log("article")
     console.log(req.body)
     try {
-        conn.query(insert_article,[req.body.params.article[0],req.body.params.article[1],req.body.params.article[2],req.body.params.article[3]],(err,data,feild)=>{
+        conn.query(insert_article,[req.body.params.article[0],req.body.params.article[4],req.body.params.article[1],req.body.params.article[2],req.body.params.article[3]],(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
