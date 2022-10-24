@@ -8,16 +8,13 @@ const JWT = require('jsonwebtoken');
 const { query } = require("express");
 
 const { USER_MODEL } = require("../../model/register");
-const { PARENT_MODEL } = require("../../model/Mother/mother_model");
+const { PARENT_MODEL  } = require("../../model/Mother/mother_model");
 const { STUDENT_LOGIN_MODEL } = require("../../model/student");
-const { CHECK_EMAIL, CHECK_MOBILE } = require("../../query/Mother/mother");
+const { CHECK_EMAIL, CHECK_MOBILE, REGISTER_MOTHER } = require("../../query/Mother/mother");
 
 exports.mother_register = (req, res, next) => {
     if (isEmpty(req.body)) return next(new AppError("form data not found", 400));
-
     try {
-       
-        
         const { error } = PARENT_MODEL.validate({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
@@ -39,25 +36,18 @@ exports.mother_register = (req, res, next) => {
                 if (data.length) return next(new AppError("Mobile already used!", 400));
                 const salt = await bcrypt.genSalt(10);
                 const hashedValue = await bcrypt.hash(req.body.password, salt);
-                conn.query(REGISTER_User_pd, [[req.body.name, hashedValue, req.body.email]], async (err, data, feilds) => {
-    
+                conn.query(REGISTER_MOTHER, [req.body.first_name ,req.body.last_name, hashedValue, req.body.email,  req.body.DP , req.body.mobile], async (err, data, feilds) => {
+                    
+                    console.log(req.body.first_name ,req.body.last_name, hashedValue, req.body.email,  req.body.DP , req.body.mobile)
                     if (err) return next(new AppError(err, 500));
-                    conn.query(COMMON_user, [[req.body.email, hashedValue, type]], async (err, data, feilds) => {
-    
-                        if (err) return next(new AppError(err, 500));
-    
-                        res.status(201).json({
-                            data: "pediatrician Registration success!"
-                        })
+                    res.status(201).json({
+                        data: "Parent Registration success!",
+                        status: "Success"
                     })
     
     
     
-                })
-    
-                //insert data into common user table
-    
-    
+                })    
             })
 
 
