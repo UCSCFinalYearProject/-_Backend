@@ -8,10 +8,12 @@ const request_chart_controller = require('../../controller/Name-Provider/Np-Dash
 const profit_chart_controller = require('../../controller/Name-Provider/Np-Dashboard/profit_chart_controller');
 
 
+
 np_route.get("/db/today_request/:receiver_id",np_request_table_controller.today_request_table);
 
 np_route.get("/db/request_table_row/:receiver_id",np_request_table_controller.request_table_row);
 np_route.get("/db/request_table_row_res/:request_id",np_request_table_controller.request_table_row_res);
+np_route.get("/db/insert_res/:request_id/:msg/:names",np_request_table_controller.insert_response);
 
 np_route.get("/new_request/:receiver_id",np_request_table_controller.request_table);
 np_route.get("/db/profile_card/:user_id",profile_card_controller.profile_card);

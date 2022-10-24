@@ -8,6 +8,7 @@ const JWT = require('jsonwebtoken');
 const {TODAY_req} = require("../../query/Name-Provider/np_dash_board");
 const {REQUEST_table_row} = require("../../query/Name-Provider/np_request_table");
 const {REQUEST_table_row_res} = require("../../query/Name-Provider/np_request_table");
+const {RESPONSE_table, SET_status} = require("../../query/Name-Provider/np_request_table");
 
 
 exports.request_table = (req, res, next) => {
@@ -108,5 +109,36 @@ exports.request_table_row_res = (req, res, next) => {
     }
 
 }
+
+//insert data to response
+exports.insert_response = (req, res, next) => {
+
+    try {
+
+        console.log( conn.query(RESPONSE_table,[[req.params.request_id,req.params.msg,req.params.names]], (err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                conn.query(SET_status, [req.params.request_id],async (err, data, feilds) => {
+
+                    if (err) return next(new AppError(err, 500));
+
+                })
+                res.status(200).json({
+                    // req:data,
+                    data:"success"
+                })
+
+            }
+
+        }))
+    } catch ( err ) {
+
+    }
+
+}
+
 
 

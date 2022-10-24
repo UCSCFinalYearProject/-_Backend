@@ -113,7 +113,7 @@ exports.insert_response = (req, res, next) => {
 
     try {
 
-       console.log( conn.query(RESPONSE_table,[[req.params.request_id,req.params.msg,req.params.letters]], (err,data,feild)=>{
+        conn.query(RESPONSE_table,[[req.params.request_id,req.params.msg,req.params.letters]], (err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -131,7 +131,7 @@ exports.insert_response = (req, res, next) => {
 
             }
 
-        }))
+        })
     } catch ( err ) {
 
     }
