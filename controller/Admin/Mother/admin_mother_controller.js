@@ -21,7 +21,7 @@ const JWT = require('jsonwebtoken');
 const {REGISTERED_baby_name_provider_controller} = require("../../../query/Admin/Name-Provider/admin_name_provider");
 const {REGISTERED_Pediatrician, REGISTERED_Pediatrician_list} = require("../../../query/Admin/Pediatrician/admin_pediatrician");
 const {REGISTERED_Pediatrician_article_list, Top_5_articanls, mother_post, Mother_Article_category_list,
-    Mothers_Artical_list
+    Mothers_Artical_list, Mother_data
 } = require("../../../query/Mother/mother");
 
 exports.registered_mothers = (req, res, next) => {
@@ -499,6 +499,26 @@ exports.Mother_Article_category_list = (req, res, next) => {
 exports.Mothers_Artical_list = (req, res, next) => {
     try {
         conn.query(Mothers_Artical_list, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
+//Yasas
+
+exports.Mother_data = (req, res, next) => {
+    try {
+        conn.query(Mother_data, (err,data,feild)=>{
             if(err){
                 return next(new AppError(err))
             }

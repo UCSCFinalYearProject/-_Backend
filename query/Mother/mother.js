@@ -20,3 +20,6 @@ exports.Mother_Article_category_list = " SELECT * FROM `article_categories` ";
 
 //Yasas6
 exports.Mothers_Artical_list = " SELECT * FROM `post` ";
+
+//Yasas7
+exports.Mother_data = " SELECT * FROM `parent` ";

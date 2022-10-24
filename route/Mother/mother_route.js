@@ -28,6 +28,9 @@ mother_register_route.get("/Mother_Article_category_list",mother_controller.Moth
 //Yasas
 mother_register_route.get("/Mothers_Artical_list",mother_controller.Mothers_Artical_list);
 
+//Yasas
+mother_register_route.get("/Mother_data",mother_controller.Mother_data);
+
 
 
 
