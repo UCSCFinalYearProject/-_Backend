@@ -8,23 +8,26 @@ const JWT = require('jsonwebtoken');
 
 
 exports.student_login = (req, res, next) => {
-    console.log(req)
+    // console.log(req)
+    console.log("came")
     const email=req.query.email
     const password=req.query.password
     const data1={
         "email":email,
         "password":password
     }
-    console.log(data1)
+    // console.log(data1)
     if (isEmpty(data1)) return next( new AppError("form data not found" , 400));
     try {
         const { error } = STUDENT_LOGIN_MODEL.validate(data1);
         if (error) return next( new AppError( error.details[0].message , 400));
         conn.query(CHECK_EMAIL, [data1.email], async (err, data, feilds) => {
+            console.log("hi")
             // if (err) return next( new AppError( err , 500));
             // if ( !data.length ) return next( new AppError( "Email or Password Invalid" , 401));
           console.log(data[0].type)
             const type=data[0].type
+
             if(type=='NP'){
                 conn.query(CHECK_NP,[data[0].email],async (err,data,feilds) => {
                     console.log(data)
