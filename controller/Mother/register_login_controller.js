@@ -37,16 +37,12 @@ exports.mother_register = (req, res, next) => {
                 const salt = await bcrypt.genSalt(10);
                 const hashedValue = await bcrypt.hash(req.body.password, salt);
                 conn.query(REGISTER_MOTHER, [req.body.first_name ,req.body.last_name, hashedValue, req.body.email,  req.body.DP , req.body.mobile], async (err, data, feilds) => {
-                    
                     console.log(req.body.first_name ,req.body.last_name, hashedValue, req.body.email,  req.body.DP , req.body.mobile)
                     if (err) return next(new AppError(err, 500));
                     res.status(201).json({
                         data: "Parent Registration success!",
                         status: "Success"
                     })
-    
-    
-    
                 })    
             })
 
@@ -63,33 +59,31 @@ exports.mother_register = (req, res, next) => {
 }
 
 exports.mother_login = (req, res, next) => {
-    // console.log(req)
-    
+    // console.log(req.body)
     const dataFromRequest = {
         "mobile": req.body.mobile,
         "password": req.body.password
     }
-    
-    // console.log(data1)
+    // console.log(dataFromRequest)
     if (isEmpty(dataFromRequest)) return next(new AppError("form data not found", 400));
     try {
         const { error } = PARENT_MODEL.validate(dataFromRequest);
         if (error) return next(new AppError(error.details[0].message, 400));
-        conn.query(CHECK_MOBILE, [dataFromRequest.mobile], async (err, data, feilds) => {
-            
+        conn.query("SELECT * FROM `parent` WHERE mobile = ? ", [dataFromRequest.mobile], async (err, data, feilds) => {
+            console.log(data )
+
             const password = data[0].password
-            console.log("ps from db " + password )
-            console.log(dataFromRequest.password)
+            // console.log("ps from db " + password )
+            // console.log(dataFromRequest.password)
             const isMatched = await bcrypt.compare(dataFromRequest.password, password);
-            console.log("is matching...")   
-            console.log(isMatched)
-
+            // console.log("is matching...")   
+            // console.log(isMatched)
+            console.log({ id: data[0].user_id , name: [0].first_name , reason : data[0].Block_reason , warning: data[0].warning_messages} ) 
             if (!isMatched) { next(new AppError("Mobile or Password Invalid", 401)) } else {
-                // const token = JWT.sign( data , "ucscucscucsc" , { expiresIn: "1d"} );
-
-                // console.log(data[0]) 
+                const token = JWT.sign( { id: data[0].user_id , name: data[0].first_name + " " + data[0].last_name , reason : data[0].Block_reason , warning: data[0].warning_messages }  , "ucscucscucsc" , { expiresIn: "1d"} ); 
                 res.status(200).json({
-                    data: data,
+                    data: data  ,
+                    token: token
                 })
             }
         })
