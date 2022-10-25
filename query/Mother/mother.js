@@ -10,7 +10,7 @@ exports.REGISTERED_Pediatrician_article_list = " SELECT * FROM `article` " ;
 exports.REGISTERED_Pediatrician_list = " SELECT * FROM `paediatrician` " ;
 
 //yasas3
-exports.Top_5_articanls = " SELECT * FROM `article` ORDER BY date DESC LIMIT 3; " ;
+exports.Top_5_articanls = " SELECT * FROM (SELECT * FROM `article` ORDER BY date DESC LIMIT 3 ) as topatricle  left join paediatrician on paediatrician.user_id = topatricle.doctor_id; " ;
 
 //yasas4
 exports.mother_post = " SELECT * FROM `post`";
