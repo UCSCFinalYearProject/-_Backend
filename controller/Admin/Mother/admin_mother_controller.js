@@ -530,6 +530,24 @@ exports.Mothers_Artical_list = (req, res, next) => {
     }
 }
 
+exports.Pediatricen_Artical_list = (req, res, next) => {
+    try {
+        conn.query(REGISTERED_Pediatrician_article_list, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
 //Yasas
 
 exports.Mother_data = (req, res, next) => {
