@@ -142,10 +142,10 @@ exports.user_login = (req, res, next) => {
         if (error) return next( new AppError( error.details[0].message , 400));
         conn.query(CHECK_EMAIL, [data1.email], async (err, data, feilds) => {
             const password=data[0].password
-            // console.log("ps from db")
+            console.log("ps from db")
             const isMatched = await bcrypt.compare(data1.password,password);
-            // console.log("is matching...")
-            // console.log(isMatched)
+            console.log("is matching...")
+            console.log(isMatched)
 
             if( !isMatched ) { next( new AppError( "Email or Password Invalid" , 401))}else {
                 const type=data[0].type
