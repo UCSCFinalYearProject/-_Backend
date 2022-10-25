@@ -493,7 +493,23 @@ exports.Mother_Article_category_list = (req, res, next) => {
 
     }
 }
+exports.Mother_Article_category_listtest = (req, res, next) => {
+    try {
+        conn.query(Mother_Article_category_list, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
 
+        })
+    } catch ( err ) {
+
+    }
+}
 //Yasas
 
 exports.Mothers_Artical_list = (req, res, next) => {
