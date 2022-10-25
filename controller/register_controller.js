@@ -142,7 +142,7 @@ exports.user_login = (req, res, next) => {
         if (error) return next( new AppError( error.details[0].message , 400));
         conn.query(CHECK_EMAIL, [data1.email], async (err, data, feilds) => {
             const password=data[0].password
-            // console.log("ps from db")
+            console.log("ps from db")
             const isMatched = await bcrypt.compare(data1.password,password);
             console.log("is matching...")
             console.log(isMatched)

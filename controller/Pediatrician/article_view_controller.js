@@ -17,7 +17,10 @@ const {
     today_comments,
     article_categories,
     VIEW_all_articles,
-    insert_article
+    insert_article,
+    request_pt_chart1,
+    editprofile,
+    addQulifications
 } = require('../../query/Pediatrician/view_article');
 const { PEDIATRICIAN_MODEL } = require('../../model/Pediatrician/view_article');
 const bcrypt = require('bcryptjs');
@@ -137,10 +140,12 @@ exports.VIEW_followers = (req, res, next) => {
 
 exports.Trending_article = (req, res, next) => {
     //   const x= req.getParameters(doctor_id)
-    // const y= req.query['doctor_id'];
+    const y= req.query.doctor_id;
+
+    console.log(y)
     // console.log(req.params.article_id)
     try {
-        conn.query(Trending_article,(err,data,feild)=>{
+        conn.query(Trending_article,y,(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -280,6 +285,26 @@ exports.article_categories = (req, res, next) => {
 
     }
 }
+exports.req_chart_pt = (req, res, next) => {
+    const y= req.query;
+    console.log("jjj",y)
+    try {
+        conn.query(request_pt_chart1,(err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    catogery:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
 exports.Insert_Pediatrician_Articles = (req, res, next) => {
     //const y= req.query['today'];
     console.log("article")
@@ -355,4 +380,48 @@ exports.imageupload = (req, res, next) => {
     //     });
     //
     // }catch (err) {console.log(err)}
+}
+exports.editprofile = (req, res, next) => {
+    try {
+        conn.query(editprofile,[req.body.params.object.firstName,req.body.params.object.description,
+            req.body.params.object. mobile,
+            req.body.params.object.email,req.body.params.object. linkedinUrl,
+            req.body.params.object. fbUrl,req.body.params.object.twitterUrl,
+            req.body.params.object.Address,req.body.params.doctor_id],(err,data,feild)=>{
+
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    comment:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.addQulifications = (req, res, next) => {
+    //const y= req.query['today'];
+    console.log("addQulifications")
+    console.log(req.body.params)
+    try {
+        conn.query(addQulifications,[req.body.params.id,req.body.params.object],(err,data,feild)=>{
+
+            if(err){
+                console.log(err)
+                // return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    comment:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
 }

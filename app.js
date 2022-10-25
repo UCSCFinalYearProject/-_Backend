@@ -9,6 +9,7 @@ const admin_route = require('./route/Admin/admin_routs'); // this for admin rout
 const student_todos_route = require('./route/student_todos');
 const al_route = require('./route/Astrologer/al_routs');
 const np_route = require('./route/Name-Provider/np_routs');
+const mother_register_route = require('./route/Mother/mother_route');
 const pt_route = require('./route/Pediatrician/pt_routs');
 
 
@@ -54,6 +55,12 @@ app.use("/np" ,  np_route);
 app.use("/pt" ,  pt_route);
 
 app.use("/reg",register_route)
+
+// if request come from "localhost:3000/pt", then it goes to pediatrician_route
+app.use("/mother" ,  mother_register_route);
+app.use("/mother" ,  mother_register_route);
+
+
 // use errorhandler middleware to handle errors
 app.use( errorHandler )
 
