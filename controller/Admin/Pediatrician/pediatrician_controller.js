@@ -2,7 +2,7 @@ const { isEmpty } = require('../../../utils/is_empty');
 const conn = require('../../../service/db_service');
 const {REGISTERED_Pediatrician,Block_Pediatrician,Unblock_Pediatrician, Registerd_paediatrician_Count,
     Blocked_paediatrician_Count, Pending_paediatrician_Count, View_Pediatrician_Requests, reject_pediatrician,
-    accept_pediatrician, View_Target_Pediatrician, REGISTERED_Pediatrician_without_pending
+    accept_pediatrician, View_Target_Pediatrician, REGISTERED_Pediatrician_without_pending, getArticleCountForAdmin
 } = require('../../../query/Admin/Pediatrician/admin_pediatrician');
 const { MOTHER_MODEL} = require('../../../model/Mother/mother_model');
 const bcrypt = require('bcryptjs');
@@ -18,6 +18,23 @@ exports.registered_pediatrician = (req, res, next) => {
             else{
                 res.status(200).json({
                     paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.getArticleCountForAdmin = (req, res, next) => {
+    try {
+        conn.query(getArticleCountForAdmin, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    articlecount:data
                 })
             }
 
