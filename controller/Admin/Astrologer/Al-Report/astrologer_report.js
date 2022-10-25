@@ -65,18 +65,18 @@ exports.Astrologer_All_Payment_Total = (req, res, next) => {
 // To take Response count of astrologer
 exports.Astrologer_Response_Count = (req, res, next) => {
     try {
-        const value=[req.body.aid];
-        conn.query(Astrologer_Response_Count,[value],(err,data,feild)=>{
+        const value=[req.params.a_id];
+        console.log(conn.query(Astrologer_Response_Count,[value],(err,data,feild)=>{
             if(err){
                 return next(new AppError(err))
             }
             else{
                 res.status(200).json({
-                    Payment:data
+                    Response:data
                 })
             }
 
-        })
+        }))
     } catch ( err ) {
     }
 }
