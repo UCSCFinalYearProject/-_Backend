@@ -144,12 +144,12 @@ exports.user_login = (req, res, next) => {
             const password=data[0].password
             // console.log("ps from db")
             const isMatched = await bcrypt.compare(data1.password,password);
-            // console.log("is matching...")
-            // console.log(isMatched)
+            console.log("is matching...")
+            console.log(isMatched)
 
             if( !isMatched ) { next( new AppError( "Email or Password Invalid" , 401))}else {
                 const type=data[0].type
-                // console.log(data[0])
+                console.log(data[0])
 
             if(type=='NP'){
                 conn.query(CHECK_NP,[data[0].email],async (err,data,feilds) => {
@@ -191,7 +191,7 @@ exports.user_login = (req, res, next) => {
                     })
                 })
             }
-            // const isMatched = await bcrypt.compare(data1.password , data[0].password);
+            //const isMatched = await bcrypt.compare(data1.password , data[0].password);
             // if( isMatched ) return next( new AppError( "Email or Password Invalid" , 401));
             //
             // const token = JWT.sign( { name: data[0].name, s_id: data[0].user_id } , "ucscucscucsc" , { expiresIn: "1d"} );
