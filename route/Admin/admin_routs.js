@@ -70,6 +70,7 @@ mother_route.get("/RegisterdpaediatricianCount",paediatrician_controller.Registe
 mother_route.get("/BlockedpaediatricianCount",paediatrician_controller.Blocked_paediatrician_Count);
 mother_route.get("/PendingpaediatricianCount",paediatrician_controller.Pending_paediatrician_Count);
 mother_route.get("/paediatricianlist",paediatrician_controller.registered_pediatrician);
+mother_route.get("/getArticleCountForAdmin",paediatrician_controller.getArticleCountForAdmin);
 mother_route.get("/paediatricianlist_without_pending",paediatrician_controller.registered_pediatrician_without_pending);
 
 mother_route.get("/block_paediatrician",paediatrician_controller.Block_pediatrician);
