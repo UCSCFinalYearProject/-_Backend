@@ -20,6 +20,9 @@ const AppError = require('../../../utils/appError');
 const JWT = require('jsonwebtoken');
 const {REGISTERED_baby_name_provider_controller} = require("../../../query/Admin/Name-Provider/admin_name_provider");
 const {REGISTERED_Pediatrician, REGISTERED_Pediatrician_list} = require("../../../query/Admin/Pediatrician/admin_pediatrician");
+const {REGISTERED_Pediatrician_article_list, Top_5_articanls, mother_post, Mother_Article_category_list,
+    Mothers_Artical_list, Mother_data
+} = require("../../../query/Mother/mother");
 
 exports.registered_mothers = (req, res, next) => {
     try {
@@ -388,4 +391,169 @@ exports.registered_pediatrician = (req, res, next) => {
     } catch ( err ) {
 
     }
+}
+
+//yasas
+
+exports.Pediatrician_article = (req, res, next) => {
+    try {
+        conn.query(REGISTERED_Pediatrician_article_list, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
+//yasas
+
+exports.registered_pediatrician = (req, res, next) => {
+    try {
+        conn.query(REGISTERED_Pediatrician_list, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
+//yasas
+
+exports.Top_5_articanls = (req, res, next) => {
+    try {
+        conn.query(Top_5_articanls, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
+
+//Yasas
+
+exports.mother_post = (req, res, next) => {
+    try {
+        conn.query(mother_post, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
+//Yasas
+
+exports.Mother_Article_category_list = (req, res, next) => {
+    try {
+        conn.query(Mother_Article_category_list, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.Mother_Article_category_listtest = (req, res, next) => {
+    try {
+        conn.query(Mother_Article_category_list, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+//Yasas
+
+exports.Mothers_Artical_list = (req, res, next) => {
+    try {
+        conn.query(Mothers_Artical_list, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
+//Yasas
+
+exports.Mother_data = (req, res, next) => {
+    try {
+        conn.query(Mother_data, (err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
+//Yasas
+
+exports.read_data = (req, res, next) => {
+    const content = readFileSync("myFile.txt");
+    console.log("content ",content )
+    return JSON.stringify(content);
 }
