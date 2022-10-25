@@ -9,3 +9,5 @@ exports.REQUEST_chart = "select month(request_date), count(*) from astrologer_re
 exports.PROFIT_chart="select month(date_time), sum(amount) from astrologer_payment a, astrologer_request b WHERE year(date_time) = '2022' AND b.receiver_id=? AND a.request_id=b.request_id group by month(date_time)";
 
 exports.TODAY_req="SELECT * FROM parent a ,astrologer_request b WHERE a.user_id =b.requester_id AND b.receiver_id=? AND date(b.request_date) = CURRENT_DATE";
+exports.editptProfileastrologer="UPDATE `astrologer` SET name=?,description=?,phone_number=?,email=?,linkedin=?,facebook=?,twitter=?,Address=?,service_charge=? WHERE user_id=1";
+exports.addQulificationsAs = "INSERT INTO `astrologer_qualification` VALUES (?,?,null)";
