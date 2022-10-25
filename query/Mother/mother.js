@@ -4,7 +4,7 @@ exports.REGISTER_MOTHER = "INSERT INTO `parent` (`user_id`, `first_name`, `last_
 
 
 //yasas1
-exports.REGISTERED_Pediatrician_article_list = " SELECT * FROM `article` " ;
+exports.REGISTERED_Pediatrician_article_list = "SELECT * FROM `article`  left join paediatrician on paediatrician.user_id = article.doctor_id; " ;
 
 //yasas2
 exports.REGISTERED_Pediatrician_list = " SELECT * FROM `paediatrician` " ;
