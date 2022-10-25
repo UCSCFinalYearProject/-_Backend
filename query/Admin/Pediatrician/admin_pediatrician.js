@@ -14,6 +14,7 @@ exports.Registerd_paediatrician_Count = "SELECT COUNT(user_id) FROM `paediatrici
 exports.Blocked_paediatrician_Count = " SELECT COUNT(user_id) FROM `paediatrician`WHERE STATUS=1" ;
 exports.Pending_paediatrician_Count = " SELECT COUNT(user_id) FROM `paediatrician`WHERE STATUS=2 " ;
 
+exports.getArticleCountForAdmin = " SELECT COUNT(article_id) as count FROM `article`;" ;
 
 
 
