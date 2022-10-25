@@ -28,7 +28,7 @@ exports.user_register = (req, res, next) => {
                 if (data.length) return next(new AppError("Email already used!", 400));
                 const salt = await bcrypt.genSalt(10);
                 const hashedValue = await bcrypt.hash(req.body.password, salt);
-                conn.query(REGISTER_User_pd, [[req.body.name, hashedValue, req.body.email]],async (err, data, feilds) => {
+                conn.query(REGISTER_User_pd, [[req.body.name, hashedValue, req.body.email,req.body.nic,req.body.address,req.body.contact_no,req.body.currently_working_at,req.body.years_of_experience]],async (err, data, feilds) => {
 
                     if (err) return next(new AppError(err, 500));
                     conn.query(COMMON_user, [[req.body.email, hashedValue,type]],async (err, data, feilds) => {
@@ -64,7 +64,7 @@ exports.user_register = (req, res, next) => {
 
                 const salt = await bcrypt.genSalt(10);
                 const hashedValue = await bcrypt.hash(req.body.password, salt);
-                console.log( conn.query(REGISTER_User_al, [[req.body.name, hashedValue, req.body.email,req.body.service_charge]],async (err, data, feilds) => {
+                console.log( conn.query(REGISTER_User_al, [[req.body.name, hashedValue, req.body.email,req.body.service_charge,req.body.nic,req.body.address,req.body.contact_no,req.body.currently_working_at,req.body.years_of_experience]],async (err, data, feilds) => {
 
                     if (err) return next(new AppError(err, 500));
                     //insert data into common user table
@@ -97,7 +97,7 @@ exports.user_register = (req, res, next) => {
                 if (data.length) return next(new AppError("Email already used!", 400));
                 const salt = await bcrypt.genSalt(10);
                 const hashedValue = await bcrypt.hash(req.body.password, salt);
-                conn.query(REGISTER_User_np, [[req.body.name, hashedValue, req.body.email,req.body.service_charge]],async (err, data, feilds) => {
+                conn.query(REGISTER_User_np, [[req.body.name, hashedValue, req.body.email,req.body.nic,req.body.address,req.body.contact_no,req.body.currently_working_at,req.body.years_of_experience,req.body.service_charge]],async (err, data, feilds) => {
 
                     if (err) return next(new AppError(err, 500));
 
