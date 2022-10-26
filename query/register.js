@@ -1,8 +1,9 @@
-exports.REGISTER_User_pd = "INSERT INTO `paediatrician`(name, password, email) VALUES (?)" ;
 
-exports.REGISTER_User_al = "INSERT INTO `astrologer`(name, password, email, service_charge, registered_at) VALUES ( ?, CURRENT_DATE())" ;
+exports.REGISTER_User_pd = "INSERT INTO `paediatrician`(name, password, email,NIC,Address,phone_number,WorkingAt,experience,STATUS) VALUES (?,2)" ;
 
-exports.REGISTER_User_np = "INSERT INTO `baby_name_provider`(name, password, email, service_charge, registered_at) VALUES ( ?, CURRENT_DATE())" ;
+exports.REGISTER_User_al = "INSERT INTO `astrologer`(name, password, email, service_charge,NIC,address,phone_number,Currently_working_at,Years_of_experience,registered_at,STATUS) VALUES ( ?, CURRENT_DATE(),2)" ;
+
+exports.REGISTER_User_np = "INSERT INTO `baby_name_provider`(name, password, email, service_charge,NIC,address,phone_number,current_work,Years_of_experience,registered_at,STATUS) VALUES ( ?, CURRENT_DATE(),2)" ;
 
 exports.COMMON_user = "INSERT INTO `common_user_details` (`email`, `password`, `type`) VALUES (?);"
 
