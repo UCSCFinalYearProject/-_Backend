@@ -28,7 +28,7 @@ exports.user_register = (req, res, next) => {
                 if (data.length) return next(new AppError("Email already used!", 400));
                 const salt = await bcrypt.genSalt(10);
                 const hashedValue = await bcrypt.hash(req.body.password, salt);
-                conn.query(REGISTER_User_pd, [[req.body.name, hashedValue, req.body.email]],async (err, data, feilds) => {
+                conn.query(REGISTER_User_pd, [[req.body.name, hashedValue, req.body.email,req.body.nic,req.body.address,req.body.contact_no,req.body.currently_working_at,req.body.years_of_experience]],async (err, data, feilds) => {
 
                     if (err) return next(new AppError(err, 500));
                     conn.query(COMMON_user, [[req.body.email, hashedValue,type]],async (err, data, feilds) => {
@@ -64,7 +64,7 @@ exports.user_register = (req, res, next) => {
 
                 const salt = await bcrypt.genSalt(10);
                 const hashedValue = await bcrypt.hash(req.body.password, salt);
-                console.log( conn.query(REGISTER_User_al, [[req.body.name, hashedValue, req.body.email,req.body.service_charge]],async (err, data, feilds) => {
+                console.log( conn.query(REGISTER_User_al, [[req.body.name, hashedValue, req.body.email,req.body.service_charge,req.body.nic,req.body.address,req.body.contact_no,req.body.currently_working_at,req.body.years_of_experience]],async (err, data, feilds) => {
 
                     if (err) return next(new AppError(err, 500));
                     //insert data into common user table
@@ -97,7 +97,7 @@ exports.user_register = (req, res, next) => {
                 if (data.length) return next(new AppError("Email already used!", 400));
                 const salt = await bcrypt.genSalt(10);
                 const hashedValue = await bcrypt.hash(req.body.password, salt);
-                conn.query(REGISTER_User_np, [[req.body.name, hashedValue, req.body.email,req.body.service_charge]],async (err, data, feilds) => {
+                conn.query(REGISTER_User_np, [[req.body.name, hashedValue, req.body.email,req.body.nic,req.body.address,req.body.contact_no,req.body.currently_working_at,req.body.years_of_experience,req.body.service_charge]],async (err, data, feilds) => {
 
                     if (err) return next(new AppError(err, 500));
 
@@ -149,7 +149,7 @@ exports.user_login = (req, res, next) => {
 
             if( !isMatched ) { next( new AppError( "Email or Password Invalid" , 401))}else {
                 const type=data[0].type
-                // console.log(data[0])
+                console.log(data[0])
 
             if(type=='NP'){
                 conn.query(CHECK_NP,[data[0].email],async (err,data,feilds) => {
@@ -191,7 +191,7 @@ exports.user_login = (req, res, next) => {
                     })
                 })
             }
-            // const isMatched = await bcrypt.compare(data1.password , data[0].password);
+            //const isMatched = await bcrypt.compare(data1.password , data[0].password);
             // if( isMatched ) return next( new AppError( "Email or Password Invalid" , 401));
             //
             // const token = JWT.sign( { name: data[0].name, s_id: data[0].user_id } , "ucscucscucsc" , { expiresIn: "1d"} );

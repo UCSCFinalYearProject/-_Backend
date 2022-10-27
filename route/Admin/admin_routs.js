@@ -106,10 +106,15 @@ mother_route.get("/al/report_stat_card2",report_stat_card2_controller.stat_card)
 mother_route.get("/al/Pending_Payment_Amount",Astrologer_Report.Pending_Payment_Amount);
 //Totake astrologer all payment amount
 mother_route.get("/al/Astrologer_All_Payment_Total",Astrologer_Report.Astrologer_All_Payment_Total);
+
 //To take response count of astrologer
-mother_route.get("/al/Astrologer_Response_Count",Astrologer_Report.Astrologer_Response_Count);
+mother_route.get("/al/Astrologer_Response_Count/:a_id",Astrologer_Report.Astrologer_Response_Count);
+
+
 //To take request count of astrologer
 mother_route.get("/al/Astrologer_Request_Count",Astrologer_Report.Astrologer_Request_Count);
+
+
 //To take profit distibution
 mother_route.get("/al/Astrologer_profit_distribution",Astrologer_Report.Astrologer_profit_distribution);
 

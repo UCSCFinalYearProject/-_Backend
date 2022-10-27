@@ -138,8 +138,8 @@ exports.Unblock_astrologers = (req, res, next) => {
 // total income of astrologer
 exports.Al_tot_income = (req, res, next) => {
     try {
-        console.log(req.body.sdate);
-        console.log(conn.query(TOT_income,[req.body.sdate,req.body.edate],(err,data,feild)=>{
+       // console.log(req.body.sdate);
+       conn.query(TOT_income,[req.body.sdate,req.body.edate],(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -150,7 +150,7 @@ exports.Al_tot_income = (req, res, next) => {
                     message:"success"
                 })
             }
-        }))
+        })
     } catch ( err ) {
 
     }
@@ -179,7 +179,7 @@ exports.Al_pending_tot_income = (req, res, next) => {
 // total registered astrologers
 exports.Registered_al = (req, res, next) => {
     try {
-        conn.query(REGISTERED_al,[req.body.sdate,req.body.edate],(err,data,feild)=>{
+        console.log(conn.query(REGISTERED_al,[req.body.sdate,req.body.edate],(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -190,7 +190,7 @@ exports.Registered_al = (req, res, next) => {
                    // message:"success"
                 })
             }
-        })
+        }))
     } catch ( err ) {
 
     }
@@ -198,7 +198,7 @@ exports.Registered_al = (req, res, next) => {
 // total registered astrologers
 exports.Profit_al = (req, res, next) => {
     try {
-        conn.query(PROFIT_al,[req.body.sdate,req.body.edate],(err,data,feild)=>{
+        console.log(conn.query(PROFIT_al,[req.body.sdate,req.body.edate],(err,data,feild)=>{
 
             if(err){
                 return next(new AppError(err))
@@ -206,10 +206,10 @@ exports.Profit_al = (req, res, next) => {
             else{
                 res.status(200).json({
                     profit_al:data,
-                   // message:"success"
+                    // message:"success"
                 })
             }
-        })
+        }))
     } catch ( err ) {
 
     }
