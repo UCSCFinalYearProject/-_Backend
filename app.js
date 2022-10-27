@@ -66,7 +66,7 @@ app.use("/reg",register_route)
 
 // if request come from "localhost:3000/pt", then it goes to pediatrician_route
 app.use("/mother" ,  mother_register_route);
-app.use("/mother" ,  mother_register_route);
+// app.use("/mother" ,  mother_register_route);
 
 
 // use errorhandler middleware to handle errors
