@@ -245,13 +245,14 @@ exports.unblock_article_comments = (req, res, next) => {
 
 
 exports.today_article_comments = (req, res, next) => {
-    // const y= req.query['today'];
-    // console.log(y)
+    const y= req.query.today;
+    console.log(y)
     try {
-        conn.query(article_categories,(err,data,feild)=>{
+        conn.query(today_comments,y,(err,data,feild)=>{
 
             if(err){
-                return next(new AppError(err))
+                // return next(new AppError(err))
+                console.log(err)
             }
             else{
                 res.status(200).json({
