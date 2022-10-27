@@ -13,6 +13,10 @@ const mother_register_route = require('./route/Mother/mother_route');
 const pt_route = require('./route/Pediatrician/pt_routs');
 
 
+//Y
+const mobile_mother_route = require('./route/Mobile-Mother/mobile_mother_routs');
+
+
 // require JWT auth Service
 const auth = require('./service/auth_service');
 
@@ -39,6 +43,7 @@ app.use(express.json());
 // if request come from "localhost:3000/student", then it gose to student_route
 app.use("/login" , register_route);
 
+
 // if request come from "localhost:3000/admin", then it goes to admin_route
 app.use("/admin" , admin_route);
 
@@ -54,11 +59,14 @@ app.use("/np" ,  np_route);
 // if request come from "localhost:3000/pt", then it goes to pediatrician_route
 app.use("/pt" ,  pt_route);
 
+// Y if request come from "localhost:3000/Mobile-Mother", then it goes to mobile_mother_route
+app.use("/mobile_mother" ,  mobile_mother_route);
+
 app.use("/reg",register_route)
 
 // if request come from "localhost:3000/pt", then it goes to pediatrician_route
 app.use("/mother" ,  mother_register_route);
-app.use("/mother" ,  mother_register_route);
+// app.use("/mother" ,  mother_register_route);
 
 
 // use errorhandler middleware to handle errors
