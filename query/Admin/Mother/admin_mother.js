@@ -4,7 +4,7 @@ exports.target_motherDetails="SELECT p.first_name,p.DP,p.STATUS,p.Reg_Date,p.ema
 exports.NumOfComments="SELECT COUNT(*) as count_comments FROM post_reply WHERE parent_id=?";
 exports.BlockMother="UPDATE parent SET Block_reason = ?,STATUS=1 WHERE `parent`.`user_id` = ?;"
 exports.UnblockMother="UPDATE `parent` SET `STATUS` = '0' WHERE `parent`.`user_id` = ?"
-exports.MotherPostsList="SELECT p.title,p.post_content,p.Date,p.status,p.no_of_likes,p.post_id as PostId,p.category, COUNT(pr.reply_id) as ReplyCount,pc.category, pc.img FROM `post` p LEFT JOIN `post_reply` pr on p.post_id=pr.post_id LEFT JOIN post_category pc ON p.category=pc.id WHERE p.user_id = ? GROUP BY p.post_id"
+exports.MotherPostsList="SELECT p.title,p.post_content,p.Date,p.status,p.no_of_likes,p.image as image,p.post_id as PostId,p.category, COUNT(pr.reply_id) as ReplyCount,pc.category, pc.img FROM `post` p LEFT JOIN `post_reply` pr on p.post_id=pr.post_id LEFT JOIN post_category pc ON p.category=pc.id WHERE p.user_id = ? GROUP BY p.post_id"
 // exports.MotherPostDetails="SELECT *, COUNT(pr.reply_id) as ReplyCount FROM `post` p LEFT JOIN `post_reply` pr on p.post_id=pr.post_id WHERE p.post_id = ? GROUP BY p.post_id;"
 
 exports.HidePost="UPDATE `post` SET `status` = '1' WHERE `post`.`post_id` = ?;"

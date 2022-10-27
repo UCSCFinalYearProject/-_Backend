@@ -19,7 +19,7 @@ const bcrypt = require('bcryptjs');
 const AppError = require('../../../utils/appError');
 const JWT = require('jsonwebtoken');
 const {REGISTERED_baby_name_provider_controller} = require("../../../query/Admin/Name-Provider/admin_name_provider");
-const {REGISTERED_Pediatrician, REGISTERED_Pediatrician_list} = require("../../../query/Admin/Pediatrician/admin_pediatrician");
+const {REGISTERED_Pediatrician, REGISTERED_Pediatrician_list,selected_pediatricianList,selected_astroList,selected_NPList} = require("../../../query/Admin/Pediatrician/admin_pediatrician");
 const {REGISTERED_Pediatrician_article_list, Top_5_articanls, mother_post, Mother_Article_category_list,
     Mothers_Artical_list, Mother_data
 } = require("../../../query/Mother/mother");
@@ -392,6 +392,66 @@ exports.registered_pediatrician = (req, res, next) => {
 
     }
 }
+exports.selected_pediatricianList = (req, res, next) => {
+    console.log("came")
+    const y=req.query.id
+    console.log(y)
+    try {
+        conn.query(selected_pediatricianList,y,(err,data,feild)=>{
+            if(err){
+                console.log(err)
+                // return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.selected_astroList = (req, res, next) => {
+    console.log("came")
+    const y=req.body.id
+    try {
+        conn.query(selected_astroList,y,(err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+exports.selected_NPList = (req, res, next) => {
+    console.log("came")
+    const y=req.body.id
+    try {
+        conn.query(selected_NPList,y,(err,data,feild)=>{
+            if(err){
+                return next(new AppError(err))
+            }
+            else{
+                res.status(200).json({
+                    paediatrician:data
+                })
+            }
+
+        })
+    } catch ( err ) {
+
+    }
+}
+
 
 //yasas
 

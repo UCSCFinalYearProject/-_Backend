@@ -16,7 +16,7 @@ exports.user_register = (req, res, next) => {
     try{
 
         //const { error } = USER_MODEL.validate([req.body.name,req.body.email,req.body.password]);
-       // console.log(error)
+        // console.log(error)
         //if (error) return next( new AppError( error.details[0].message , 400));
 
         //if user type is 1 then insert data into pediatrician table
@@ -151,63 +151,53 @@ exports.user_login = (req, res, next) => {
                 const type=data[0].type
                 console.log(data[0])
 
-            if(type=='NP'){
-                conn.query(CHECK_NP,[data[0].email],async (err,data,feilds) => {
-                    // console.log(data)
-                    res.status(200).json({
-                        data: data,
+                if(type=='NP'){
+                    conn.query(CHECK_NP,[data[0].email],async (err,data,feilds) => {
+                        // console.log(data)
+                        res.status(200).json({
+                            data: data,
+                        })
                     })
-                })
-            }
-            else if(type=='PT'){
-                conn.query(CHECK_PT,[data[0].email],async (err,data,feilds) => {
-                    const token = JWT.sign( { name: data[0].name, s_id: data[0].user_id } , "ucscucscucsc" , { expiresIn: "1d"} );
+                }
+                else if(type=='PT'){
+                    conn.query(CHECK_PT,[data[0].email],async (err,data,feilds) => {
+                        const token = JWT.sign( { name: data[0].name, s_id: data[0].user_id } , "ucscucscucsc" , { expiresIn: "1d"} );
 
-                    // console.log("this is pt data")
-                    // console.log(data[0].name)
-                    // res.status(200).json({
-                    //     data: data,
-                    //     token:token
-                    // })
-                    res.header("auth-token", token).status(200).json({
-                        data: data,
-                        token: token
+                        // console.log("this is pt data")
+                        // console.log(data[0].name)
+                        // res.status(200).json({
+                        //     data: data,
+                        //     token:token
+                        // })
+                        res.header("auth-token", token).status(200).json({
+                            data: data,
+                            token: token
+                        })
                     })
-                })
-            }
-            else if (type=='AL'){
-                conn.query(CHECK_AL,[data[0].email],async (err,data,feilds) => {
-                    console.log(data)
-                    res.status(200).json({
-                        data: data,
+                }
+                else if (type=='AL'){
+                    conn.query(CHECK_AL,[data[0].email],async (err,data,feilds) => {
+                        console.log(data)
+                        res.status(200).json({
+                            data: data,
+                        })
                     })
-                })
-            }
-            else if (type=='ADMIN'){
-                conn.query(CHECK_ADMIN,[data[0].email],async (err,data,feilds) => {
-                    console.log(data)
-                    res.status(200).json({
-                        data: data,
+                }
+                else if (type=='ADMIN'){
+                    conn.query(CHECK_ADMIN,[data[0].email],async (err,data,feilds) => {
+                        console.log(data)
+                        res.status(200).json({
+                            data: data,
+                        })
                     })
-                })
-            }
-            //const isMatched = await bcrypt.compare(data1.password , data[0].password);
-            // if( isMatched ) return next( new AppError( "Email or Password Invalid" , 401));
-            //
-            // const token = JWT.sign( { name: data[0].name, s_id: data[0].user_id } , "ucscucscucsc" , { expiresIn: "1d"} );
-            //
-        }})
+                }
+                //const isMatched = await bcrypt.compare(data1.password , data[0].password);
+                // if( isMatched ) return next( new AppError( "Email or Password Invalid" , 401));
+                //
+                // const token = JWT.sign( { name: data[0].name, s_id: data[0].user_id } , "ucscucscucsc" , { expiresIn: "1d"} );
+                //
+            }})
     } catch ( err ) {
 
     }
 }
-
-
-
-
-
-
-
-
-
-

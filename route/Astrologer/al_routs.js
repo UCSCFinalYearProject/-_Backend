@@ -18,6 +18,7 @@ al_route.get("/db/profile_card/:user_id",profile_card_controller.profile_card);
 al_route.get("/db/stat_card1/:receiver_id",stat_card1_controller.stat_card);
 al_route.get("/db/stat_card2/:receiver_id",stat_card2_controller.stat_card);
 al_route.get("/db/req_chart/:receiver_id",request_chart_controller.request_chart);
+
 al_route.get("/db/profit_chart/:receiver_id",profit_chart_controller.profit_chart);
 al_route.post("/editptProfileastrologer",editptProfileastrologer.editptProfileastrologer);
 al_route.post("/addQulificationsAs",editptProfileastrologer.addQulificationsAs);

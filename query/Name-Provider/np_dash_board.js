@@ -14,3 +14,5 @@ exports.PROFIT_chart="select month(date_time), sum(amount) " +
     "WHERE year(date_time) = '2022' AND b.receiver_id=? " +
     "AND a.request_id=b.request_id group by month(date_time)";
 exports.TODAY_req="SELECT * FROM parent a ,baby_name_provider_request b WHERE a.user_id =b.requester_id AND b.receiver_id=? AND date(b.request_date) = CURRENT_DATE";
+exports.editptProfileNP="UPDATE `baby_name_provider` SET name=?,description=?,phone_number=?,email=?,linkedin=?,facebook=?,twitter=?,Address=?,service_charge=? WHERE user_id=1";
+exports.addQulificationsNP = "INSERT INTO `np_qualification` VALUES (?,?,null)";

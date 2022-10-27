@@ -1,3 +1,4 @@
+
 exports.REGISTER_User_pd = "INSERT INTO `paediatrician`(name, password, email,NIC,Address,phone_number,WorkingAt,experience,STATUS) VALUES (?,2)" ;
 
 exports.REGISTER_User_al = "INSERT INTO `astrologer`(name, password, email, service_charge,NIC,address,phone_number,Currently_working_at,Years_of_experience,registered_at,STATUS) VALUES ( ?, CURRENT_DATE(),2)" ;

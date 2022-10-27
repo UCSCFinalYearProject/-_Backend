@@ -3,7 +3,7 @@ const conn = mysql.createConnection({
  host: "localhost",
  user: "root", // your my sql user name. By default it's 'root'
  password: "", //your my mysql password. By default it's '' (empty string)
- database: "maw_thurula", // here your database name
+ database: "maw_thurula1", // here your database name
 });
 
 conn.connect();
